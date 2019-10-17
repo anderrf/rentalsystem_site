@@ -1,0 +1,284 @@
+@import "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+body{
+    background: url(../cadeira.jpg) no-repeat;
+    background-size: cover;
+    width: 100%;
+    margin: 0;
+}
+
+.container{
+  margin-top: 40px;
+  width: 100%;
+  height: 400px;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.navbar{
+  overflow: hidden;
+  background-color: red;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  margin-bottom: 20px;
+  height: 7vh;
+  color: white;
+}
+
+.navbar a{
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.jumbotron.text-center.updest{
+    background-color: red;
+    color: white;
+    padding: 100px 25px;
+}
+
+.rind{
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.ritemfoot{
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.spannav{
+  padding-top: 15px;
+}
+
+.spancont{
+  border-color: white;
+  border-width: 1px;
+  border-style: solid;
+  padding: 5px;
+  border-radius: 50%;
+}
+
+.foot{
+  padding-top: 20px;
+  padding-bottom: 10px;
+  background-color: red;
+  color: white;
+}
+
+.lgfoot{
+  color: white;
+}
+
+.spimgicon{
+  margin: 0px 20px 0px 0px;
+}
+
+.imgicon{
+  width: 30px;
+  border-color: white;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.ficha{
+  margin-top: 20px;
+}
+
+.textao{
+  text-align: justify;
+}
+
+.linkfb:hover{
+  background-color: #3b5998;
+}
+
+.linkinsta:hover{
+  background: linear-gradient(to bottom left, #515bd4, #8134af, #dd2a7b, #feda77, #f58529);
+}
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  border: none;
+  background: none;
+  width:100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+  color: #f1f1f1;
+}
+
+/* Main content */
+.main {
+  margin-left: 200px; /* Same as the width of the sidenav */
+  font-size: 20px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+/* Add an active class to the active dropdown button */
+.active {
+  background-color: green;
+  color: white;
+}
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  background-color: #262626;
+  padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+#dono{
+  width:500px;
+  height:500px;
+}
+#cad{
+  position: absolute;
+  margin-left: 550px;
+}
+#login{
+  position: absolute;
+  margin-left: 650px;
+}
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 200px;
+  border: 1px solid #f1f1f1;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  margin-top: 20px;
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+/* Style the back side */
+.flip-card-back {
+  background-color: black;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.donos {
+  border-radius: 1px;
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+.button:hover, a:hover {
+  opacity: 0.7;
+}
+.notification {
+  background-color: black;
+  color: white;
+  text-decoration: none;
+  padding: 15px 26px;
+  position: relative;
+  display: inline-block;
+  border-radius: 2px;
+  margin-left: 500px;
+}
+.notification:hover {
+  background: red;
+}
+
+.notification .badge {
+  position: absolute;
+  top: 0px;
+  right: -10px;
+  padding: 5px 10px;
+  border-radius: 50%;
+  background: red;
+  color: white;
+}
+#notification{
+  margin-left: 930px;
+}

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/styleVenda.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <title>Site de Vendas</title>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+      </div>
+
+      <ul class="nav navbar-nav">
+
+        <li><a href="siteVenda.html">Home</a></li>
+        <li><a href="quemsomos.html">Quem somos</a></li>
+        <li><a href="pedido.html">Pedido</a></li>
+        <li><a href="contato.html">Contato</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+          <li><a href="login.html">Login</a></li>
+          <li><a href="cadastro.html">Cadastrar</a></li>
+        </ul>
+    </div>
+</nav>
+
+
+  <div class="pedido-box">
+    <h2>Faça seu pedido</h2>
+    <div class="textbox">
+      <i class="fa fa-home"></i>
+      <input type="text" placeholder="Endereço" name="" value="">
+
+    </div>
+    <div class="textbox">
+      <i class="fa fa-map-signs"></i>
+      <input type="text" placeholder="Referência" name="" value="">
+
+    </div>
+    <div class="textbox">
+      <i class="fa fa-list-ol"></i>
+      <input type="number" placeholder="Jogos" name="" value="">
+
+    </div>
+    <div class="textbox">
+      <i class="fa fa-calculator"></i>
+      <input type="number" placeholder="Mesas" name="" value="">
+
+    </div>
+    <div class="textbox">
+      <i class="fa fa-calculator"></i>
+      <input type="number" placeholder="Cadeiras" name="" value="">
+
+    </div>
+
+    <div class="row linha">
+      <div class="col-xs-12">
+        <div class="form-group">
+          <label for="">Toalhas:</label>
+          <div class="row">
+
+            <div class="col-xs-6">
+              <div class="form-group">
+                <label for="">Cor</label>
+                <select class="form-control" name="lista" id="lista" style="">
+                  <option value="1.2">-</option>
+                  <option value="1.2">Roxa</option>
+                  <option value="1.2">Preta</option>
+                  <option value="1.2">vermelha</option>
+                  <option value="1.2">Rosa</option>
+                  <option value="1.2">Azul</option>
+                  <option value="1.2">Dourado</option>
+                  <option value="1.2">Bege</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-xs-6">
+              <div class="form-group">
+                <label for="">Quantidade</label>
+                <select class="form-control" name="number" id="lista">
+                  <option value="1.2">-</option>
+                  <option value="1.2">1</option>
+                  <option value="1.2">2</option>
+                  <option value="1.2">3</option>
+                  <option value="1.2">4</option>
+                  <option value="1.2">5</option>
+                  <option value="1.2">6</option>
+                  <option value="1.2">7</option>
+                  <option value="1.2">8</option>
+                  <option value="1.2">9</option>
+                  <option value="1.2">10</option>
+                </select>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+    <div class="row">
+      <form>
+        <input class="btnContato" type="button" name="" value="Alugar">
+      </form>
+      <form>
+        <input class="btnContato" type="button" name="" value="Cancelar">
+      </form>
+
+    </div>
+
+
+
+
+
+  </div>
+</body>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+</html>
