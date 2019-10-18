@@ -30,47 +30,57 @@
       <h2>Cadastre-se</h2>
       <div class="textbox">
         <i class="fa fa-user"></i>
-        <input type="text" placeholder="Nome" name="" value="">
+        <input type="text" placeholder="Nome" name="nome" id="cadNome" maxlength="50">
+
+      </div>
+      <div class="textbox">
+        <i class="fa fa-user"></i>
+        <input type="text" placeholder="Senha" name="senha" id="cadSenha" maxlength="20">
 
       </div>
       <div class="textbox">
         <i class="fa fa-home"></i>
-        <input type="text" placeholder="Endereço" name="" value="">
+        <input type="text" placeholder="Endereço" name="endereco" id="cadEndereco" maxlength="50">
 
       </div>
       <div class="textbox">
         <i class="fa fa-home"></i>
-        <input type="text" placeholder="Bairro" name="" value="">
+        <input type="text" placeholder="Bairro" name="bairro" id="cadBairro" maxlength="50">
 
       </div>
       <div class="textbox">
         <i class="fa fa-home"></i>
-        <input type="text" placeholder="Cidade-UF" name="" value="">
+        <input type="text" placeholder="Cidade - UF" name="cidadeUF" id="cadCidadeUF" maxlength="50">
 
       </div>
       <div class="textbox">
         <i class="fa fa-map-signs"></i>
-        <input type="text" placeholder="Referência" name="" value="">
+        <input type="text" placeholder="Referência" name="referencia" id="cadReferencia" maxlength="50">
 
       </div>
       <div class="textbox">
         <i class="fa fa-phone"></i>
-        <input type="text" placeholder="Telefone" name="" value="">
+        <input type="text" placeholder="Telefone" name="telefone" id="cadTelefone" maxlength="15">
 
       </div>
       <div class="textbox">
         <i class="fa fa-phone"></i>
-        <input type="text" placeholder="Celular" name="" value="">
+        <input type="text" placeholder="Celular" name="celular" id="cadCelular" maxlength="15">
+
+      </div>
+      <div class="textbox">
+        <i class="fa fa-user"></i>
+        <input type="text" placeholder="E-mail" name="email" id="cadEmail" maxlength="200">
 
       </div>
       <div class="textbox">
         <i class="fa fa-id-card"></i>
-        <input type="text" placeholder="CPF" name="" value="">
+        <input type="text" placeholder="CPF" name="CPF" id="cadCPF" maxlength="14">
 
       </div>
       <div class="textbox">
         <i class="fa fa-id-card"></i>
-        <input type="text" placeholder="RG" name="" value="">
+        <input type="text" placeholder="RG" name="RG" id="cadRG" maxlength="12">
 
       </div>
 
@@ -81,10 +91,10 @@
 
       <div class="row">
         <form>
-          <input class="btnContato" type="button" name="" value="Cadastrar">
+          <input class="btnContato" type="button" name="" value="Cadastrar" id="btnCadastrarCliente">
         </form>
         <form>
-          <input class="btnContato" type="button" name="" value="Cancelar">
+          <input class="btnContato" type="button" name="" value="Cancelar" onclick="location.reload()">
         </form>
 
       </div>
@@ -101,4 +111,5 @@
   </body>
   <script src="js\jquery-3.3.1.min.js"></script>
   <script src="js\bootstrap.min.js"></script>
+  <script src="js\action.js"></script>
 </html>
