@@ -7,8 +7,8 @@
 
     $query = "SELECT * FROM tb_Produto WHERE cd_produto = '$codProduto'";
     $resultado = mysqli_query($conecta, $query);
-
-
+    
+    
     while($linha = mysqli_fetch_assoc($resultado)){
         $registro = array(
             'produto' => array(
@@ -21,7 +21,7 @@
             )
         );
     }
-
+    
     echo json_encode($registro);
 
   } catch (Exception $e) {

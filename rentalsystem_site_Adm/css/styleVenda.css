@@ -15,7 +15,7 @@ body{
 
 .navbar{
   overflow: hidden;
-  background-color: red;
+  background-color: #b22222;
   position: fixed;
   top: 0;
   width: 100%;
@@ -38,7 +38,7 @@ body{
 }
 
 .jumbotron.text-center.updest{
-    background-color: red;
+    background-color: #b22222;
     color: white;
     padding: 100px 25px;
 }
@@ -68,7 +68,7 @@ body{
 .foot{
   padding-top: 20px;
   padding-bottom: 10px;
-  background-color: red;
+  background-color: #b22222;
   color: white;
 }
 
@@ -262,7 +262,7 @@ body{
   position: relative;
   display: inline-block;
   border-radius: 2px;
-  
+
 }
 .notification:hover {
   background: red;
@@ -276,7 +276,4 @@ body{
   border-radius: 50%;
   background: red;
   color: white;
-}
-#notification{
-  
 }

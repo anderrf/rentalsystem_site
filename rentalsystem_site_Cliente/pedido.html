@@ -25,97 +25,114 @@
         <li><a href="contato.html">Contato</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-          <li><a href="login.html">Login</a></li>
-          <li><a href="cadastro.html">Cadastrar</a></li>
-        </ul>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="cadastro.html">Cadastrar</a></li>
+      </ul>
     </div>
-</nav>
+  </nav>
 
-
-  <div class="pedido-box">
-    <h2>Faça seu pedido</h2>
-    <div class="textbox">
-      <i class="fa fa-home"></i>
-      <input type="text" placeholder="Endereço" name="" value="">
-
-    </div>
-    <div class="textbox">
-      <i class="fa fa-map-signs"></i>
-      <input type="text" placeholder="Referência" name="" value="">
-
-    </div>
-    <div class="textbox">
-      <i class="fa fa-list-ol"></i>
-      <input type="number" placeholder="Jogos" name="" value="">
-
-    </div>
-    <div class="textbox">
-      <i class="fa fa-calculator"></i>
-      <input type="number" placeholder="Mesas" name="" value="">
-
-    </div>
-    <div class="textbox">
-      <i class="fa fa-calculator"></i>
-      <input type="number" placeholder="Cadeiras" name="" value="">
-
-    </div>
-
-    <div class="row linha">
-      <div class="col-xs-12">
-        <div class="form-group">
-          <label for="">Toalhas:</label>
-          <div class="row">
-
-            <div class="col-xs-6">
-              <div class="form-group">
-                <label for="">Cor</label>
-                <select class="form-control" name="lista" id="lista" style="">
-                  <option value="1.2">-</option>
-                  <option value="1.2">Roxa</option>
-                  <option value="1.2">Preta</option>
-                  <option value="1.2">vermelha</option>
-                  <option value="1.2">Rosa</option>
-                  <option value="1.2">Azul</option>
-                  <option value="1.2">Dourado</option>
-                  <option value="1.2">Bege</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="col-xs-6">
-              <div class="form-group">
-                <label for="">Quantidade</label>
-                <select class="form-control" name="number" id="lista">
-                  <option value="1.2">-</option>
-                  <option value="1.2">1</option>
-                  <option value="1.2">2</option>
-                  <option value="1.2">3</option>
-                  <option value="1.2">4</option>
-                  <option value="1.2">5</option>
-                  <option value="1.2">6</option>
-                  <option value="1.2">7</option>
-                  <option value="1.2">8</option>
-                  <option value="1.2">9</option>
-                  <option value="1.2">10</option>
-                </select>
-              </div>
-            </div>
-
-          </div>
+  <div class="container" id="cont">
+    <div class="col-md-12">
+      <div class="row ficha">
+        <div class="col-md-12">
+          <fieldset>
+            <p class="textao" id="descPedido">
+              AVISO: O endereço descrito deverá ser do local de entrega e retirada do pedido.
+            </p>
+          </fieldset>
         </div>
       </div>
 
 
+    </div>
+  </div>
+
+  <div class="pedido-box">
+    <h2>Faça seu pedido</h2>
+
+    <div id="ped1">
+      <div class="textbox">
+        <i class="fa fa-home"></i>
+        <input type="text" placeholder="Endereço" name="" value="">
+      </div>
+      <div class="textbox">
+        <i class="fa fa-map-signs"></i>
+        <input type="text" placeholder="Referência" name="" value="">
+      </div>
+    </div>
+
+    <div id="ped2">
+      <div class="textbox">
+        <i class="fa fa-list-ol"></i>
+        <input type="number" placeholder="Jogos" name="" value="">
+      </div>
+      <div class="textbox">
+        <i class="fa fa-calculator"></i>
+        <input type="number" placeholder="Mesas" name="" value="">
+      </div>
+      <div class="textbox">
+        <i class="fa fa-calculator"></i>
+        <input type="number" placeholder="Cadeiras" name="" value="">
+      </div>
 
     </div>
-    <div class="row">
-      <form>
-        <input class="btnContato" type="button" name="" value="Alugar">
-      </form>
-      <form>
-        <input class="btnContato" type="button" name="" value="Cancelar">
-      </form>
 
+    <div id="ped3">
+      <div class="textbox">
+        <div class="row linha">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label for="">Toalhas:</label>
+              <div class="row">
+
+                <div class="col-xs-6">
+                  <div class="form-group">
+                    <label for="">Cor</label>
+                    <select class="form-control" name="lista" id="lista">
+                      <option value="1.2">-</option>
+                      <option value="1.2">Roxa</option>
+                      <option value="1.2">Preta</option>
+                      <option value="1.2">vermelha</option>
+                      <option value="1.2">Rosa</option>
+                      <option value="1.2">Azul</option>
+                      <option value="1.2">Dourado</option>
+                      <option value="1.2">Bege</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-xs-6">
+                  <div class="form-group">
+                    <div class="textbox">
+                      <input type="number" placeholder="Quantidade" name="" value="">
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <form>
+          <input class="btnContato" type="button" name="" value="Cancelar" onclick="location.reload()">
+        </form>
+      </div>
+      <div class="col-md-6">
+        <form>
+          <input class="btnContato" type="button" name="" value="Avançar" id="cadPedidoProx">
+        </form>
+        <form>
+          <input class="btnContato" type="button" name="" value="Enviar" id="btnEnviarPedido">
+        </form>
+      </div>
     </div>
 
 
@@ -126,5 +143,13 @@
 </body>
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script src="js/action.js"></script>
+<script>
+  $(document).ready(function () {
+    indexPedido = 1;
+    dividePedido();
+  });
+
+</script>
 
 </html>

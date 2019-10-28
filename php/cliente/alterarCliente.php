@@ -3,8 +3,7 @@
     $conecta = mysqli_connect("localhost", "id10822138_rentalsystem", "programmastery", "id10822138_rentalsystem");
                               //servidor, usuário banco, senha, nome do banco
 
-    $nome = $_POST['nome'];
-    $senha = crypt('$2$55vdv51ds', $_POST['senha']);
+    $codCliente = $_POST['codCliente'];
     $endereco = $_POST['endereco'];
     $bairro = $_POST['bairro'];
     $cidadeUF = $_POST['cidadeUF'];
@@ -12,14 +11,12 @@
     $telefone = $_POST['telefone'];
     $celular = $_POST['celular'];
     $email = $_POST['email'];
-    $CPF = $_POST['CPF'];
-    $RG = $_POST['RG'];
 
-    $query = "INSERT INTO tb_Cliente values (null, '$nome', '$senha', '$endereco', '$bairro', '$cidadeUF', '$referencia', '$telefone', '$celular', '$email', '$CPF', '$RG', null, true);";
+    $query = "UPDATE tb_Cliente SET nm_endereco = '$endereco', nm_bairro = '$bairro', nm_cidadeUF = '$cidadeUF', nm_referencia = '$referencia', nr_telefone = '$telefone', nr_celular = '$celular', ds_email = '$email' WHERE cd_cliente = '$codCliente';";
 
     mysqli_query($conecta, $query);
-    echo "Cadastro realizado com sucesso";
+    echo "Alteração realizada com sucesso";
 
   } catch (Exception $e) {
-    echo "Erro ao cadastrar: ".$e;
+    echo "Erro ao alterar: ".$e;
   }
