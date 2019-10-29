@@ -5,7 +5,7 @@
 
     $codCliente = $_POST['codCliente'];
 
-    $query = "SELECT cd_cliente, nm_cliente, nr_telefone, CONCAT(nm_endereco, ', ',nm_bairro, ', ', nm_cidadeUF) AS ds_endereco, ds_email FROM tb_Cliente WHERE cd_cliente = '$codCliente' AND ds_status = true";
+    $query = "SELECT cd_cliente, nm_cliente, nr_telefone, CONCAT(nm_endereco, ', ', nr_numeroEndereco, ', ', nm_bairro, ', ', nm_cidade, ', ', nm_UF) AS ds_endereco, ds_email FROM tb_Cliente WHERE cd_cliente = '$codCliente' AND ds_status = true AND id_nivel = 2";
     $resultado = mysqli_query($conecta, $query);
     
     

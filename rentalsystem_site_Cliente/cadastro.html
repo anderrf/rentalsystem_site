@@ -6,6 +6,20 @@
 
   <link rel="stylesheet" href="css/styleVenda.css">
   <link rel="stylesheet" href="css/bootstrap.min.css">
+
+  <script src="js\jquery-3.3.1.min.js"></script>
+  <script src="js\bootstrap.min.js"></script>
+  <script src="js\action.js"></script>
+  <script src="js\cliente.js"></script>
+  <script>
+
+    $(document).ready(function () {
+      indexCadCliente = 1;
+      divideCadCliente();
+    });
+
+  </script>
+
   <title></title>
 </head>
 
@@ -48,18 +62,39 @@
     </div>
 
     <div id="cadcli2">
-      <div class="textbox">
-        <i class="fa fa-home"></i>
-        <input type="text" placeholder="Endereço" name="endereco" id="cadEndereco" maxlength="50">
+      <div class="row">
+        <div class="col-md-9">
+          <div class="textbox">
+            <i class="fa fa-home"></i>
+            <input type="text" placeholder="Endereço" name="endereco" id="cadEndereco" maxlength="50">
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="textbox">
+            <i class="fa fa-home"></i>
+            <input type="number" placeholder="Nº" name="numero" id="cadNumero" maxlength="4">
+          </div>
+        </div>
       </div>
       <div class="textbox">
         <i class="fa fa-home"></i>
         <input type="text" placeholder="Bairro" name="bairro" id="cadBairro" maxlength="50">
       </div>
-      <div class="textbox">
-        <i class="fa fa-home"></i>
-        <input type="text" placeholder="Cidade - UF" name="cidadeUF" id="cadCidadeUF" maxlength="50">
+      <div class="row">
+        <div class="col-md-9">
+          <div class="textbox">
+            <i class="fa fa-home"></i>
+            <input type="text" placeholder="Cidade" name="cidade" id="cadCidade" maxlength="50">
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="textbox">
+            <i class="fa fa-home"></i>
+            <input type="text" placeholder="UF" name="UF" id="cadUF" maxlength="2">
+          </div>
+        </div>
       </div>
+
       <div class="textbox">
         <i class="fa fa-map-signs"></i>
         <input type="text" placeholder="Referência" name="referencia" id="cadReferencia" maxlength="50">
@@ -103,8 +138,8 @@
           <input class="btnContato" type="button" name="" value="Avançar" id="Next">
         </form>
         <form>
-            <input class="btnContato" type="button" name="" value="Cadastrar" id="btnCadastrarCliente">
-          </form>
+          <input class="btnContato" type="button" name="" value="Cadastrar" id="btnCadastrarCliente">
+        </form>
       </div>
     </div>
 
@@ -113,20 +148,6 @@
 
 
   </div>
-
-
-
-  </div>
 </body>
-<script src="js\jquery-3.3.1.min.js"></script>
-<script src="js\bootstrap.min.js"></script>
-<script src="js\action.js"></script>
-<script>
-  
-  $(document).ready(function(){
-    indexCadCliente = 1;
-    divideCadCliente();
-  });
 
-</script>
 </html>

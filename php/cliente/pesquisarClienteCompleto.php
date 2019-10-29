@@ -5,7 +5,7 @@
 
     $pesquisa = $_POST['pesquisa'];
 
-    $query = "SELECT * FROM tb_Cliente WHERE ds_status = true AND nm_cliente LIKE '%$pesquisa%';";
+    $query = "SELECT * FROM tb_Cliente WHERE ds_status = true AND id_nivel = 2 AND nm_cliente LIKE '%$pesquisa%';";
     $resultado = mysqli_query($conecta, $query);
     $registro = array(
       'cliente'=>array()
@@ -16,8 +16,10 @@
         'codigo' => $linha['cd_cliente'],
         'nome' => $linha['nm_cliente'],
         'endereco' => $linha['nm_endereco'],
+        'numero' => $linha['nr_numeroEndereco'],
         'bairro' => $linha['nm_bairro'],
-        'cidadeUF' => $linha['nm_cidadeUF'],
+        'cidade' => $linha['nm_cidade'],
+        'UF' => $linha['nm_UF'],
         'referencia' => $linha['ds_referencia'],
         'telefone' => $linha['nr_telefone'],
         'celular' => $linha['nr_celular'],
