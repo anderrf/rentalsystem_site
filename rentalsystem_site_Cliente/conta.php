@@ -32,7 +32,7 @@
         </div>
     </nav>
 
-    <div class="container-fluid divContent" style="min-height: 60vh">
+    <div class="container-fluid divContent" style="min-height: 60vh; margin-top: 10vh">
 
         <div class="row">
             <div class="col-xs-3">
@@ -53,71 +53,6 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="container-fluid foot">
-
-        <div class="row foot">
-
-            <div class="col-md-4">
-                <fieldset>
-                    <legend class="lgfoot">Contato</legend>
-                    <div class="row ritemfoot">
-                        <div class="col-md-12">
-                            <label><span class="glyphicon glyphicon-map-marker spancont"></span>Mongaguá - SP</label>
-                        </div>
-                    </div>
-                    <div class="row ritemfoot">
-                        <div class="col-md-12">
-                            <label for=""><span
-                                    class="glyphicon glyphicon-earphone spancont"></span>(13)3507-3362</label>
-                        </div>
-                    </div>
-                    <div class="row ritemfoot">
-                        <div class="col-md-12">
-                            <label><span
-                                    class="glyphicon glyphicon-envelope spancont"></span>isaqueborin@hotmail.com</label>
-                        </div>
-                    </div>
-
-                </fieldset>
-            </div>
-
-            <div class="col-md-4">
-                <fieldset>
-                    <legend class="lgfoot">Minha conta</legend>
-
-                    <div class="row ritemfoot">
-                        <div class="col-md-12">
-                            <label for="">Login</label>
-                        </div>
-                    </div>
-                    <div class="row ritemfoot">
-                        <div class="col-md-12">
-                            <label for="">Cadastro</label>
-                        </div>
-                    </div>
-
-                </fieldset>
-
-            </div>
-
-            <div class="col-md-4">
-                <fieldset>
-                    <legend class="lgfoot">Sede</legend>
-
-                    <div class="row ritemfoot">
-                        <div class="col-md-12">
-                            <label><span class="glyphicon glyphicon-map-marker spancont"></span> Mongaguá - SP</label>
-                        </div>
-                    </div>
-
-                </fieldset>
-            </div>
-
-
-        </div>
-
     </div>
 
 

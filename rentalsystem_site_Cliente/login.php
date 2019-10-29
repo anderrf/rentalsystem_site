@@ -28,22 +28,20 @@
       </ul>
     </div>
   </nav>
+
   <div class="login-box">
     <h1>Login</h1>
 
-
-    <div class="textbox">
-      <i class="fa fa-user"></i>
-      <input type="text" placeholder="Nome" name="" value="" id="inpNome">
-
-    </div>
-    <div class="textbox">
-      <i class="fa fa-key"></i>
-      <input type="password" placeholder="Senha" name="" value="" id="inpSenha">
-
-    </div>
-    <form>
-      <input class="btnContato" type="button" name="" value="Entrar" id="btnEntrar">
+    <form method="POST" action="https://rentalsystempm.000webhostapp.com/php/conta/efetuarLogin.php">
+      <div class="textbox">
+        <i class="fa fa-user"></i>
+        <input type="text" placeholder="Nome" name="nome" value="" id="inpNome">
+      </div>
+      <div class="textbox">
+        <i class="fa fa-key"></i>
+        <input type="password" placeholder="Senha" name="senha" value="" id="inpSenha">
+      </div>
+        <input class="btnContato" type="submit" name="" value="Entrar" id="btnEntrar">
     </form>
   </div>
 

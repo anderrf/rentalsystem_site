@@ -20,30 +20,39 @@ try{
         $verificaNome = $linha['nm_cliente'];
         $verificaSenha = $linha['ds_senha'];
         $nivel = $linha['id_nivel'];
+        $codigo = $linha['cd_cliente'];
     }
 
     if($nome == $verificaNome){
         if($senha == $verificaSenha){
             if($nivel == 1){
                 $varLogin = true;
-                header('location: /rentalsystem_site_adm/index.php');
+                $_SESSION['varLogin'] = $varLogin;
+                $_SESSION['nome'] = $nome;
+                $_SESSION['senha'] = $senha;
+                $_SESSION['nivel'] = $nivel;
+                $_SESSION['codigo'] = $codigo;
+                header('Location: https://rentalsystempm.000webhostapp.com/rentalsystem_site_adm/index.php');
             }
             else if($nivel == 2){
                 $varLogin = true;
-                header('location: /rentalsystem_site_cliente/conta.php');
+                $_SESSION['varLogin'] = $varLogin;
+                $_SESSION['nome'] = $nome;
+                $_SESSION['senha'] = $senha;
+                $_SESSION['nivel'] = $nivel;
+                $_SESSION['codigo'] = $codigo;
+                header('Location: https://rentalsystempm.000webhostapp.com/rentalsystem_site_cliente/conta.php');
             }
             else{
-                header('location: /rentalsystem_site_cliente/index.php');
+                echo "rentalsystem_site_cliente/index.php";
             }
         }
         else{
             echo "Senha incorreta.";
-            header('location: /rentalsystem_site_cliente/login.php');
         }
     }
     else{
         echo "Nome não encontrado.";
-        header('location: /rentalsystem_site_cliente/login.php');
     }
 
 
