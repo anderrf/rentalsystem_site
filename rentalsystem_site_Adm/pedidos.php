@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/pedidos.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <title>Site de Vendas</title>
+    <title>RentalSystem - Admin</title>
 </head>
 
 <body>
@@ -19,9 +19,9 @@
 
             <ul class="nav navbar-nav">
 
-                <li><a href="siteVenda.html">Home</a></li>
-                <li><a href="pedidos.html">Pedidos</a></li>
-                <li><a href="clientes.html">Clientes</a></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="pedidos.php">Pedidos</a></li>
+                <li><a href="clientes.php">Clientes</a></li>
 
             </ul>
 

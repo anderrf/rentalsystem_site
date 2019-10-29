@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/styleVenda.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styleee.css">
-    <title>Site de Vendas</title>
+    <title>RentalSystem - Admin</title>
 </head>
 
 <body>
@@ -20,9 +20,9 @@
 
             <ul class="nav navbar-nav">
 
-                <li><a href="siteVenda.html">Home</a></li>
-                <li><a href="pedidos.html">Pedidos</a></li>
-                <li><a href="clientes.html">Clientes</a></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="pedidos.php">Pedidos</a></li>
+                <li><a href="clientes.php">Clientes</a></li>
 
             </ul>
 
