@@ -1,3 +1,19 @@
+<?php
+    session_start();
+
+    $varLogin = false;
+
+    $varLogin = $_SESSION['varLogin'];
+
+    if($varLogin == false){
+        header('Location: https://rentalsystempm.000webhostapp.com/rentalsystem_site_cliente/cadastro.php');
+        echo "Cadastre-se e entre para acessar a página de conta.";
+    }
+    else{
+
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="br">
 
@@ -27,7 +43,7 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="" id="notification"><i class="fa fa-bell"></i></a></li>
-              <li><a href="cadastro.php"><i class="fa fa-power-off">  Sair</i></a></li>
+              <li id="btnDeslogar"><a><i class="fa fa-power-off">  Sair</i></a></li>
             </ul>
         </div>
     </nav>
@@ -59,5 +75,12 @@
 </body>
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script src="js/action.js"></script>
+<script src="js/conta.js"></script>
+<script>
+    $(document).ready(function(){
+        carregaPagConta();
+    });
+</script>
 
 </html>
