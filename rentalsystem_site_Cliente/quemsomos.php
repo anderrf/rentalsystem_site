@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    $varLogin = $_SESSION['varLogin'];
+?>
 <!DOCTYPE html>
 <html lang="br">
 
@@ -20,12 +24,29 @@
             <ul class="nav navbar-nav">
                 <li><a href="index.php">Home</a></li>
                 <li><a href="quemsomos.php">Quem somos</a></li>
-                <li><a href="pedido.php">Pedido</a></li>
+                <li><a href="<?php 
+            
+                    if($varLogin != true){
+                        echo 'cadastro.php';
+                    }
+                    else{
+                        echo 'pedido.php';
+                    }
+
+                ?>">Pedido</a></li>
                 <li><a href="contato.php">Contato</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="login.php">Login</a></li>
-                <li><a href="cadastro.php">Cadastrar</a></li>
+                <?php
+                    if($varLogin != true){
+                        echo '<li><a href="login.php">Login</a></li>
+                        <li><a href="cadastro.php">Cadastrar</a></li>';
+                    }
+                    else{
+                        echo '<li><a href="conta.php"><i class="fa fa-bell"> Conta</i></a></li>
+                        <li><a href="https://rentalsystempm.000webhostapp.com/php/conta/logout.php" id="btnDeslogar"><i class="fa fa-power-off">  Sair</i></a></li>';
+                    }
+                ?>
             </ul>
         </div>
     </nav>
@@ -105,18 +126,36 @@
             <div class="col-md-4">
                 <fieldset>
                     <legend class="lgfoot">Minha conta</legend>
-
-                    <div class="row ritemfoot">
-                        <div class="col-md-12">
-                            <label for="">Login</label>
-                        </div>
-                    </div>
-                    <div class="row ritemfoot">
-                        <div class="col-md-12">
-                            <label for="">Cadastro</label>
-                        </div>
-                    </div>
-
+                    <?php
+                        if($varLogin != true){
+                            echo '
+                                <div class="row ritemfoot">
+                                    <div class="col-md-12">
+                                        <label for=""><a href="login.html">Login</a></label>
+                                    </div>
+                                </div>
+                                <div class="row ritemfoot">
+                                    <div class="col-md-12">
+                                        <label for=""><a href="cadastro.html">Cadastro</a></label>
+                                    </div>
+                                </div>
+                            ';
+                        }
+                        else{
+                            echo '
+                                <div class="row ritemfoot">
+                                    <div class="col-md-12">
+                                        <label for=""><a href="conta.html">Conta</a></label>
+                                    </div>
+                                </div>
+                                <div class="row ritemfoot">
+                                    <div class="col-md-12">
+                                        <label for=""><a href="https://rentalsystempm.000webhostapp.com/php/conta/logout.php">Sair</a></label>
+                                    </div>
+                                </div>
+                            ';
+                        }
+                    ?>
                 </fieldset>
 
             </div>

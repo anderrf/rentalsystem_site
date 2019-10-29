@@ -1,16 +1,15 @@
 <?php
     session_start();
 
-    $varLogin = false;
-
     $varLogin = $_SESSION['varLogin'];
 
-    if($varLogin == false){
+    $codigo = $_SESSION['codigo'];
+
+    if($varLogin != true){
         header('Location: https://rentalsystempm.000webhostapp.com/rentalsystem_site_cliente/cadastro.php');
         echo "Cadastre-se e entre para acessar a página de conta.";
     }
     else{
-
     }
 ?>
 
@@ -38,12 +37,21 @@
 
             <li><a href="index.php">Home</a></li>
             <li><a href="quemsomos.php">Quem somos</a></li>
-            <li><a href="pedido.php">Pedido</a></li>
+            <li><a href="<?php 
+            
+            if($varLogin != true){
+                echo 'cadastro.php';
+            }
+            else{
+                echo 'pedido.php';
+            }
+
+            ?>">Pedido</a></li>
             <li><a href="contato.php">Contato</a></li>
           </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="" id="notification"><i class="fa fa-bell"></i></a></li>
-              <li id="btnDeslogar"><a><i class="fa fa-power-off">  Sair</i></a></li>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a id="notification"><i class="fa fa-bell"></i></a></li>
+                <li><a href="https://rentalsystempm.000webhostapp.com/php/conta/logout.php" id="btnDeslogar"><i class="fa fa-power-off">  Sair</i></a></li>
             </ul>
         </div>
     </nav>
@@ -51,17 +59,17 @@
     <div class="container-fluid divContent" style="min-height: 60vh; margin-top: 10vh">
 
         <div class="row">
-            <div class="col-xs-3">
+            <div class="col-md-3">
                 <div class="card">
-                    <h2>Sua conta</h2>
+                    <h2 data-id="<?php echo $_SESSION['codigo'] ?>" id="suaConta">Sua conta</h2>
                     <img src="img/pessoa.jpg" alt="John" style="width:100%">
-                    <h2>Nome</h2>
-                    <p class="title">Conta Cliente</p>
-                    <p>Telefone: </p>
-                    <p>Endereço: </p>
+                    <h2 id="nome">Nome</h2>
+                    <p class="title" id="contaCliente">Conta Cliente</p>
+                    <p id="telefone">Telefone: </p>
+                    <p id="endereco">Endereço: </p>
                 </div>
             </div>
-            <div class="col-xs-8" style="background-color: white; border-radius: 5px">
+            <div class="col-md-8" style="background-color: white; border-radius: 5px">
                 <h2>Recentes:</h2>
                 <hr>
                 <div class="row">
