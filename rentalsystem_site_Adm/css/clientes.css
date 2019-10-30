@@ -47,14 +47,14 @@ body{
   position: relative;
   display: inline-block;
   border-radius: 2px;
-  margin-left: 500px;
+  /*margin-left: 500px;*/
 }
 .notification:hover {
   background: red;
 }
 
 .notification .badge {
-  position: absolute;
+  position: relative;
   top: 0px;
   right: -10px;
   padding: 5px 10px;
@@ -63,7 +63,7 @@ body{
   color: white;
 }
 #notification{
-  margin-left: 930px;
+  /*margin-left: 930px;*/
 }
 
 table{
@@ -83,17 +83,17 @@ table tr:nth-child(odd) {
 }
 
 .nmCliente{
-  width: 45%;
+  width: 25%;
 }
 
 .telCliente{
-  width: 15%;
+  width: 25%;
 }
 
 .endCliente{
-  width: 45%;
+  width: 25%;
 }
 
-.input-group{
-  margin-top: 20px;
+.emCliente{
+  width: 25%;
 }

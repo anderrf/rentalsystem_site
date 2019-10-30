@@ -139,12 +139,12 @@
                             echo '
                                 <div class="row ritemfoot">
                                     <div class="col-md-12">
-                                        <label for=""><a href="login.html">Login</a></label>
+                                        <label for=""><a href="login.php">Login</a></label>
                                     </div>
                                 </div>
                                 <div class="row ritemfoot">
                                     <div class="col-md-12">
-                                        <label for=""><a href="cadastro.html">Cadastro</a></label>
+                                        <label for=""><a href="cadastro.php">Cadastro</a></label>
                                     </div>
                                 </div>
                             ';
@@ -153,7 +153,7 @@
                             echo '
                                 <div class="row ritemfoot">
                                     <div class="col-md-12">
-                                        <label for=""><a href="conta.html">Conta</a></label>
+                                        <label for=""><a href="conta.php">Conta</a></label>
                                     </div>
                                 </div>
                                 <div class="row ritemfoot">

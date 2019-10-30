@@ -62,7 +62,7 @@
             <div class="col-md-3">
                 <div class="card">
                     <h2 data-id="<?php echo $_SESSION['codigo'] ?>" id="suaConta">Sua conta</h2>
-                    <img src="img/pessoa.jpg" alt="John" style="width:100%">
+                    <img src="img/pessoa.png" alt="John" style="width:100%" data-toggle="modal" data-target="#moAltFoto">
                     <h2 id="nome">Nome</h2>
                     <p class="title" id="contaCliente">Conta Cliente</p>
                     <p id="telefone">Telefone: </p>

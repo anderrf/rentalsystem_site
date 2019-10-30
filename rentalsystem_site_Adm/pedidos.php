@@ -1,3 +1,26 @@
+<?php
+    session_start();
+
+    $varLogin = $_SESSION['varLogin'];
+
+    if($varLogin != true){
+        $varLogin = false;
+        $_SESSION['nome'] = "";
+        $_SESSION['senha'] = "";
+        $_SESSION['nivel'] = 0;
+        $_SESSION['codigo'] = 0;
+        echo "Acesso negado.";
+        header('Location: https://rentalsystempm.000webhostapp.com/rentalsystem_site_cliente/index.php');
+    }
+    else{
+        $nivel =  $_SESSION['nivel'];
+        if($nivel != 1){
+            echo "Acesso negado.";
+            header('Location: https://rentalsystempm.000webhostapp.com/rentalsystem_site_cliente/index.php');
+        }
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="br">
 
@@ -26,8 +49,12 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-
-                <li><a href="" id="notification"><i class="fa fa-bell"></i></a></li>
+                <?php
+                    echo '
+                        <li><a href="" id="notification"><i class="fa fa-bell"></i></a></li>
+                        <li><a href="https://rentalsystempm.000webhostapp.com/php/conta/logout.php" id="btnDeslogar"><i class="fa fa-power-off">  Sair</i></a></li>
+                    ';
+                ?>
             </ul>
         </div>
     </nav>
@@ -57,25 +84,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <table>
-                    <tr>
-                        <th>Cliente:</th>
-                        <th>Endereço:</th>
-                        <th>Data:</th>
-                        <th>Valor:</th>
-                    </tr>
-                    <tr>
-                        <td class="clPedido">Lucas</td>
-                        <td class="endPedido">Av Monteiro Lobato</td>
-                        <td class="dtPedido">2019-10-02</td>
-                        <td class="vlPedido">500</td>
-                    </tr>
-                    <tr>
-                        <td class="clPedido">Diana</td>
-                        <td class="endPedido">Rua S</td>
-                        <td class="dtPedido">2019-11-20</td>
-                        <td class="vlPedido">250</td>
-                    </tr>
+                <table id="tbPedidos">
                 </table>
             </div>
         </div>
@@ -89,5 +98,5 @@
 </body>
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-
+<script src="js/pedido.js"></script>
 </html>

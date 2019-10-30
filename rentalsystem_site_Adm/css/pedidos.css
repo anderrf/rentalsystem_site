@@ -47,7 +47,7 @@ body{
   position: relative;
   display: inline-block;
   border-radius: 2px;
-  margin-left: 500px;
+  /*margin-left: 500px;*/
 }
 .notification:hover {
   background: red;
@@ -63,7 +63,7 @@ body{
   color: white;
 }
 #notification{
-  margin-left: 930px;
+  /*margin-left: 930px;*/
 }
 
 table{

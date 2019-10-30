@@ -12,19 +12,16 @@
     $UF = $_POST['UF'];
     $referencia = $_POST['referencia'];
 
-    $dataEntrega = strval($_POST['dataEntrega']);
-    $horaEntrega = strval($_POST['horaEntrega']);
-    list($hEntrega, $minEntrega) = explode(":", $horaEntrega);
-    $dhEntrega = date_create($dataEntrega);
-    $dhEntrega = date_time_set($dhEntrega, $hEntrega, $minEntrega);
+    $dataEntrega = date($_POST['dataEntrega']);
+    $horaEntrega = time('H', $_POST['horaEntrega']);
+    $dhEntrega = strval($dataEntrega . ' ' . $horaEntrega);
 
-    $dataRetirada = $_POST['dataRetirada'];
-    $horaRetirada = $_POST['horaRetirada'];
-    list($hRetirada, $minRetirada) = explode(":", $horaRetirada);
-    $dhRetirada = date_create($dataRetirada);
-    $dhRetirada = date_time_set($dhRetirada, $hRetirada, $minRetirada);
+    $dataRetirada = date($_POST['dataRetirada']);
+    $horaRetirada = time('H', $_POST['horaRetirada']);
+    $dhRetirada = strval($dataRetirada . ' ' . $horaRetirada);
 
-    $dataPedido = localtime();
+    $dataPedido = date('Y-m-d');
+
 
     $query = "INSERT INTO tb_Pedido VALUES 
       (NULL, '$endereco', '$numero', '$bairro', '$cidade', '$UF', '$referencia', $dataPedido, $dhEntrega, $dhRetirada, NULL, '$codCliente', 1);";

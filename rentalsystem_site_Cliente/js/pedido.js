@@ -126,7 +126,7 @@ function dividePedido() {
 function listaCorToalha(){
     $.ajax({
         type: "post",
-        url: "https://rentalsystempm.000webhostapp.com/php/estoque/listarProduto.php",
+        url: "https://rentalsystempm.000webhostapp.com/php/estoque/listarCorToalha.php",
         dataType: "json",
         success: function(data){
             var itemProduto = "";
@@ -190,11 +190,11 @@ function enviarPedido(){
         cache: false,
         processData: false,
         success: function(data){
-            alert(data);
+            alert("Certo: "+data);
             location.reload();
         },
         error: function(data){
-            alert(data);
+            alert("Erro: "+data);
         }
     });
 }

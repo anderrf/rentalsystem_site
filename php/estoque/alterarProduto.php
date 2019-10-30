@@ -13,7 +13,7 @@
       $extensao = end($test);
       if($extensao == "jpg" || $extensao == "png"){
         $nome = rand(100, 9999).'.'.$extensao;
-        $local = '../foto/'.$nome;
+        $local = '../../php/foto/produto/'.$nome;
         move_uploaded_file($_FILES['foto']['tmp_name'], $local);
       }
     }
