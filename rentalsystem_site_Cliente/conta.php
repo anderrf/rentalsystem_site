@@ -6,73 +6,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/styleVenda.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <title>Site de Vendas</title>
+    <title>RentalSystem - Conta</title>
 </head>
 
 <body>
 
     <nav class="navbar navbar-fixed-top">
         <div class="container-fluid">
-            <div class="navbar-header">
-            </div>
+          <div class="navbar-header">
+          </div>
 
-            <ul class="nav navbar-nav">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="quemsomos.html">Quem somos</a></li>
-                <li><a href="pedido.html">Pedido</a></li>
-                <li><a href="contato.html">Contato</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="login.html">Login</a></li>
-                <li><a href="cadastro.html">Cadastrar</a></li>
+          <ul class="nav navbar-nav">
+
+            <li><a href="index.php">Home</a></li>
+            <li><a href="quemsomos.php">Quem somos</a></li>
+            <li><a href="pedido.php">Pedido</a></li>
+            <li><a href="contato.php">Contato</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="" id="notification"><i class="fa fa-bell"></i></a></li>
+              <li><a href="cadastro.php"><i class="fa fa-power-off">  Sair</i></a></li>
             </ul>
         </div>
     </nav>
-    <div class="jumbotron text-center updest">
-        <h1>Quem Somos?</h1>
-        <p></p>
-    </div>
 
-    <div class="container">
-        <div class="col-md-6">
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <img src="img/donos.jpg" id="donos" alt="Avatar" style="width:300px;height:300px;">
-                    </div>
-                    <div class="flip-card-back">
-                        <h1>Tati & Isaque</h1>
-                        <p>Autônomo</p>
-                        <p>Bem Vindos!</p>
-                    </div>
+    <div class="container-fluid divContent" style="min-height: 60vh">
+
+        <div class="row">
+            <div class="col-xs-3">
+                <div class="card">
+                    <h2>Sua conta</h2>
+                    <img src="img/pessoa.jpg" alt="John" style="width:100%">
+                    <h2>Nome</h2>
+                    <p class="title">Conta Cliente</p>
+                    <p>Telefone: </p>
+                    <p>Endereço: </p>
+                </div>
+            </div>
+            <div class="col-xs-8" style="background-color: white; border-radius: 5px">
+                <h2>Recentes:</h2>
+                <hr>
+                <div class="row">
+
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
-            <h2>Informações sobre a empresa</h2>
-
-
-            <div class="row ficha">
-                <div class="col-md-12">
-                    <fieldset>
-                        <legend></legend>
-                        <p class="textao">
-                            A empresa de aluguel Tati & Isaque - aluguel de mesas e cadeiras, conta com diversos jogos
-                            para seu aluguel, tendo mais de 5 anos no mercado de locação, a empresa tenta buscar o
-                            melhor custo beneficio do ramo de aluguel para eventos.
-
-                    </fieldset>
-                </div>
-            </div>
-
-
-        </div>
     </div>
-
-    <br>
-    <br>
-    <br>
 
     <div class="container-fluid foot">
 
@@ -138,8 +119,6 @@
         </div>
 
     </div>
-
-
 
 
 </body>

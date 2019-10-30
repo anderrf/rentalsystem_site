@@ -20,7 +20,7 @@
 
   </script>
 
-  <title></title>
+  <title>RentalSystem - Cadastro</title>
 </head>
 
 <body>
@@ -31,14 +31,14 @@
 
       <ul class="nav navbar-nav">
 
-        <li><a href="index.html">Home</a></li>
-        <li><a href="quemsomos.html">Quem somos</a></li>
-        <li><a href="pedido.html">Pedido</a></li>
-        <li><a href="contato.html">Contato</a></li>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="quemsomos.php">Quem somos</a></li>
+        <li><a href="pedido.php">Pedido</a></li>
+        <li><a href="contato.php">Contato</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="login.html">Login</a></li>
-        <li><a href="cadastro.html">Cadastrar</a></li>
+        <li><a href="login.php">Login</a></li>
+        <li><a href="cadastro.php">Cadastrar</a></li>
       </ul>
     </div>
   </nav>

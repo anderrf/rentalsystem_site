@@ -4,7 +4,7 @@ $(document).on("click", "#btnEntrar", function(){
     form_data.append("senha", $("#inpSenha").val());
     $.ajax({
         type: "post",
-        url: "https://rentalsystempm.000webhostapp.com/php/conta/login.php",
+        url: "https://rentalsystempm.000webhostapp.com/php/conta/efetuarLogin.php",
         data: form_data,
         contentType: false,
         cache: false,
