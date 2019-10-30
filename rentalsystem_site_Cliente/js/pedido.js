@@ -111,7 +111,7 @@ function dividePedido() {
             break;
 
         case 4:
-            document.getElementById('descPedido').textContent = 'AVISO: Você poderá alugar toalhas para decoração das mesas, TODO VALOR PODERÁ SER NEGOCIADO COM OS PROPRIETÁRIOS.';
+            document.getElementById('descPedido').textContent = 'AVISO: Você poderá realizar o pedido com no mínimo 01 dia de antecedência.';
             $("#ped1").prop("hidden", true);
             $("#ped2").prop("hidden", true);
             $("#ped3").prop("hidden", true);
@@ -121,6 +121,25 @@ function dividePedido() {
             break;
 
     }
+}
+
+function listaCorToalha(){
+    $.ajax({
+        type: "post",
+        url: "https://rentalsystempm.000webhostapp.com/php/estoque/listarProduto.php",
+        dataType: "json",
+        success: function(data){
+            var itemProduto = "";
+            $.each(data.produto, function (i, dados) {
+                itemProduto +=
+                "<option value='"+dados.descricao+"'>"+dados.descricao+"</option>";
+            });
+            $("#pedCorToalha").html(itemProduto);
+        },
+        error: function(data){
+
+        }
+    });
 }
 
 $(document).on("click", "#btnEnviarPedido", function(){
@@ -141,12 +160,13 @@ $(document).on("click", "#btnEnviarPedido", function(){
         $("#pedHoraRetirada").prop("focus", true);
     }
     else{
-
+        enviarPedido();
     }
 });
 
 function enviarPedido(){
     var form_data = new FormData();
+    form_data.append("codCliente", $("#hCodigo").data('id'));
     form_data.append("endereco", $("#pedEndereco").val());
     form_data.append("numero", $("#pedNumero").val());
     form_data.append("bairro", $("#pedBairro").val());
@@ -164,7 +184,7 @@ function enviarPedido(){
     form_data.append("horaRetirada", $("#pedHoraRetirada").val());
     $.ajax({
         type: "post",
-        url: "",
+        url: "https://rentalsystempm.000webhostapp.com/php/pedido/cadPedido.php",
         data: form_data,
         contentType: false,
         cache: false,

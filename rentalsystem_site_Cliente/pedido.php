@@ -1,6 +1,15 @@
 <?php
     session_start();
     $varLogin = $_SESSION['varLogin'];
+
+    if($varLogin != true){
+      header('Location: https://rentalsystempm.000webhostapp.com/rentalsystem_site_cliente/cadastro.php');
+      echo "Cadastre-se e entre para acessar a página de pedido.";
+    }
+    else{
+    }
+
+    $codigo = $_SESSION['codigo'];
 ?>
 <!DOCTYPE html>
 <html lang="br">
@@ -69,7 +78,7 @@
   </div>
 
   <div class="pedido-box">
-    <h2>Faça seu pedido</h2>
+    <h2 id="hCodigo" data-id="<?php echo $codigo ?>">Faça seu pedido</h2>
 
     <div id="ped1">
       <div class="row">
@@ -139,13 +148,6 @@
                     <label for="">Cor</label>
                     <select class="form-control" name="lista" id="pedCorToalha">
                       <option value=""></option>
-                      <option value="Roxa">Roxa</option>
-                      <option value="Preta">Preta</option>
-                      <option value="vermelha">vermelha</option>
-                      <option value="Rosa">Rosa</option>
-                      <option value="Azul">Azul</option>
-                      <option value="Dourado">Dourado</option>
-                      <option value="Bege">Bege</option>
                     </select>
                   </div>
                 </div>
@@ -228,6 +230,7 @@
   $(document).ready(function () {
     indexPedido = 1;
     dividePedido();
+    listaCorToalha();
   });
 
 </script>
