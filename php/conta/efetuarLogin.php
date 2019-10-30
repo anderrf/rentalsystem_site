@@ -44,15 +44,17 @@ try{
                 header('Location: https://rentalsystempm.000webhostapp.com/rentalsystem_site_cliente/conta.php');
             }
             else{
-                echo "rentalsystem_site_cliente/index.php";
+                header('Location: https://rentalsystempm.000webhostapp.com/rentalsystem_site_cliente/login.php');
             }
         }
         else{
             echo "Senha incorreta.";
+            header('Location: https://rentalsystempm.000webhostapp.com/rentalsystem_site_cliente/login.php');
         }
     }
     else{
         echo "Nome não encontrado.";
+        header('Location: https://rentalsystempm.000webhostapp.com/rentalsystem_site_cliente/login.php');
     }
 
 

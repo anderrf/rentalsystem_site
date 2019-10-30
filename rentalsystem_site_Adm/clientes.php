@@ -125,12 +125,12 @@
                         <h3 class="modal-title" id="hCliente"></h3>
                     </div>
                     <div class="modal-body">
-            
                         <div id="moInner">
+                        
                         </div>
                     </div>
                     <div class="modal-footer" id="moFooter">
-            
+                        <button class="btn btn-danger" id="btnDeletar">Deletar</button>
                     </div>
                 </div>
             </div>
