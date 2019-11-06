@@ -202,17 +202,11 @@
 
     <div class="row">
       <div class="col-md-6">
-        <form>
           <input class="btnContato" type="button" name="" value="Cancelar" onclick="location.reload()">
-        </form>
       </div>
       <div class="col-md-6">
-        <form>
           <input class="btnContato" type="button" name="" value="Avançar" id="cadPedidoProx">
-        </form>
-        <form>
           <input class="btnContato" type="button" name="" value="Enviar" id="btnEnviarPedido">
-        </form>
       </div>
     </div>
 
