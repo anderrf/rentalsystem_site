@@ -12,19 +12,12 @@
     $UF = $_POST['UF'];
     $referencia = $_POST['referencia'];
 
-    $dataEntrega = date($_POST['dataEntrega']);
-    $horaEntrega = time('H', $_POST['horaEntrega']);
-    $dhEntrega = strval($dataEntrega . ' ' . $horaEntrega);
-
-    $dataRetirada = date($_POST['dataRetirada']);
-    $horaRetirada = time('H', $_POST['horaRetirada']);
-    $dhRetirada = strval($dataRetirada . ' ' . $horaRetirada);
-
-    $dataPedido = date('Y-m-d');
+    $dhEntrega = date($_POST['dataEntrega'] . ' ' . $_POST['horaEntrega']);
+    $dhRetirada = date($_POST['dataRetirada'] . ' ' . $_POST['horaRetirada']);
 
 
     $query = "INSERT INTO tb_Pedido VALUES 
-      (NULL, '$endereco', '$numero', '$bairro', '$cidade', '$UF', '$referencia', $dataPedido, $dhEntrega, $dhRetirada, NULL, '$codCliente', 1);";
+      (NULL, '$endereco', '$numero', '$bairro', '$cidade', '$UF', '$referencia', CURDATE(), '$dhEntrega', '$dhRetirada', 1, '$codCliente', 1);";
 
     mysqli_query($conecta, $query);
 
