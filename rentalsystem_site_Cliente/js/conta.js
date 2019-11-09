@@ -28,3 +28,39 @@ $(document).on("click", "#btnDeslogar", function(){
         }
     });
 });
+
+function desabilita(){
+    $("#moEndereco").prop("readonly", true);
+    $("#moNumero").prop("readonly", true);
+    $("#moBairro").prop("readonly", true);
+    $("#moCidade").prop("readonly", true);
+    $("#moUF").prop("readonly", true);
+    $("#moReferencia").prop("readonly", true);
+    $("#moTelefone").prop("readonly", true);
+    $("#moCelular").prop("readonly", true);
+    $("#moEmail").prop("readonly", true);
+    $("#rFoto").prop("hidden", true);
+    $("#btnEditarConta").prop("hidden", false);
+    $("#btnSalvarEditar").prop("hidden", true);
+    $("#btnCancelar").prop("hidden", true);
+}
+
+function habilita(){
+    $("#moEndereco").prop("readonly", false);
+    $("#moNumero").prop("readonly", false);
+    $("#moBairro").prop("readonly", false);
+    $("#moCidade").prop("readonly", false);
+    $("#moUF").prop("readonly", false);
+    $("#moReferencia").prop("readonly", false);
+    $("#moTelefone").prop("readonly", false);
+    $("#moCelular").prop("readonly", false);
+    $("#moEmail").prop("readonly", false);
+    $("#rFoto").prop("hidden", false);
+    $("#btnEditarConta").prop("hidden", true);
+    $("#btnSalvarEditar").prop("hidden", false);
+    $("#btnCancelar").prop("hidden", false);
+}
+
+$(document).on("click", "#btnDados", function(){
+    desabilita();
+});
