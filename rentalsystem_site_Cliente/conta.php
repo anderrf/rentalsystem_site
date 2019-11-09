@@ -67,109 +67,113 @@
                     <p class="title" id="contaCliente">Conta Cliente</p>
                     <p id="telefone">Telefone: </p>
                     <p id="endereco">Endereço: </p>
-                    <button id="btnDados" class="btn btn-danger" data-toggle="modal" data-target="#modalConta">Dados</button>
                 </div>
             </div>
-            <div class="col-md-8" style="background-color: white; border-radius: 5px">
-                <h2>Recentes:</h2>
-                <hr>
-                <div class="row">
 
-                </div>
-            </div>
-        </div>
+            <div class="col-md-8" style="background-color: white; border-radius: 5px; padding: 10px">
 
-        <div id="modalConta" class="modal fade" role="dialog" value="">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h3 class="modal-title" id="hDados" data-id="<?php echo $_SESSION['codigo'] ?>">Dados</h3>
+                <button type="button" class="btn" id="btnSelPedidos">Pedidos</button>
+                <button type="button" class="btn" id="btnSelDados">Dados</button>
+
+                <div id="divPedidos">
+                    <h2>Recentes:</h2>
+                    <hr>
+                    <div class="row">
+
                     </div>
-                    <div class="modal-body">
+                </div>
 
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label for="">Nome:</label>
-                                <input class="form-control" type="text" id="moNome" readonly>
-                            </div>
-                        </div>
+                <div id="divDados">
+                
+                    <h2>Dados</h2>
+                    <hr>
 
-                        <div class="row">
-                            <div class="col-md-9">
-                                <label for="">Endereço:</label>
-                                <input class="form-control" type="text" id="moEndereco" readonly>
-                            </div>
-                            <div class="col-md-3">
-                                <label for="">Número:</label>
-                                <input class="form-control" type="number" id="moNumero" readonly>
-                            </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="">Nome:</label>
+                            <input class="form-control" type="text" id="moNome" readonly>
                         </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-9">
+                            <label for="">Endereço:</label>
+                            <input class="form-control" type="text" id="moEndereco" readonly>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="">Número:</label>
+                            <input class="form-control" type="number" id="moNumero" readonly>
+                        </div>
+                    </div>
                         
-                        <div class="row">
-                            <div class="col-md-5">
-                                <label for="">Bairro:</label>
-                                <input class="form-control" type="text" id="moBairro" readonly>
-                            </div>
-                            <div class="col-md-5">
-                                <label for="">Cidade:</label>
-                                <input class="form-control" type="text" id="moCidade" readonly>
-                            </div>
-                            <div class="col-md-2">
-                                <label for="">UF:</label>
-                                <input class="form-control" type="text" id="moUF" readonly>
-                            </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <label for="">Bairro:</label>
+                            <input class="form-control" type="text" id="moBairro" readonly>
                         </div>
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label for="">Referência:</label>
-                                <input class="form-control" type="text" id="moReferencia" readonly>
-                            </div>
+                        <div class="col-md-5">
+                            <label for="">Cidade:</label>
+                            <input class="form-control" type="text" id="moCidade" readonly>
                         </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label for="">Telefone:</label>
-                                <input class="form-control" type="text" id="moTelefone" readonly>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="">Celular:</label>
-                                <input class="form-control" type="number" id="moCelular" readonly>
-                            </div>
+                        <div class="col-md-2">
+                            <label for="">UF:</label>
+                            <input class="form-control" type="text" id="moUF" readonly>
                         </div>
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label for="">E-mail:</label>
-                                <input class="form-control" type="text" id="moEmail" readonly>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label for="">CPF:</label>
-                                <input class="form-control" type="text" id="moCPF" readonly>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="">RG:</label>
-                                <input class="form-control" type="number" id="moRG" readonly>
-                            </div>
-                        </div>
-
-                        <div class="row" id="rFoto">
-                            <div class="col-md-12">
-                                <label for="">Selecione uma foto:</label>
-                                <input type="file" id="foto">
-                            </div>
-                        </div>
-
                     </div>
-                    <div class="modal-footer" id="moFooter">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="">Referência:</label>
+                            <input class="form-control" type="text" id="moReferencia" readonly>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="">Telefone:</label>
+                            <input class="form-control" type="text" id="moTelefone" readonly>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="">Celular:</label>
+                            <input class="form-control" type="number" id="moCelular" readonly>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="">E-mail:</label>
+                            <input class="form-control" type="text" id="moEmail" readonly>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="">CPF:</label>
+                            <input class="form-control" type="text" id="moCPF" readonly>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="">RG:</label>
+                            <input class="form-control" type="number" id="moRG" readonly>
+                        </div>
+                    </div>
+
+                    <div class="row" id="rFoto">
+                        <div class="col-md-12">
+                            <label for="">Selecione uma foto:</label>
+                            <input type="file" id="foto">
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div id="divBtnEditar">
                         <button class="btn btn-primary" id="btnEditarConta">Editar</button>
+                    </div>
+                    <div id="divEditar">
                         <button class="btn btn-success" id="btnSalvarEditar">Salvar</button>
                         <button class="btn btn-danger" id="btnCancelar">Cancelar</button>
                     </div>
+
                 </div>
 
             </div>
@@ -184,9 +188,110 @@
 <script src="js/action.js"></script>
 <script src="js/conta.js"></script>
 <script>
+
+    var opt;
+    opt = "Pedidos";
+
     $(document).ready(function(){
+
         carregaPagConta();
+        mostraOP();
+
     });
+
+    function mostraOP(){
+            if(opt == "Pedidos"){
+                $("#divPedidos").prop("hidden", false);
+                $("#divDados").prop("hidden", true);
+            }
+            else if(opt == "Dados"){
+                $("#divPedidos").prop("hidden", true);
+                $("#divDados").prop("hidden", false);
+                desabilita();
+                mostrarDados();
+            }
+        }
+    
+    $(document).on("click", "#btnSelPedidos", function(){
+        opt = "Pedidos";
+        mostraOP();
+    });
+
+    $(document).on("click", "#btnSelDados", function(){
+        opt = "Dados";
+        mostraOP();
+    });
+
+        function desabilita(){
+        $("#moEndereco").prop("readonly", true);
+        $("#moNumero").prop("readonly", true);
+        $("#moBairro").prop("readonly", true);
+        $("#moCidade").prop("readonly", true);
+        $("#moUF").prop("readonly", true);
+        $("#moReferencia").prop("readonly", true);
+        $("#moTelefone").prop("readonly", true);
+        $("#moCelular").prop("readonly", true);
+        $("#moEmail").prop("readonly", true);
+        $("#rFoto").prop("hidden", true);
+        $("#divBtnEditar").prop("hidden", false);
+        $("#divEditar").prop("hidden", true);
+    }
+
+    function habilita(){
+        $("#moEndereco").prop("readonly", false);
+        $("#moNumero").prop("readonly", false);
+        $("#moBairro").prop("readonly", false);
+        $("#moCidade").prop("readonly", false);
+        $("#moUF").prop("readonly", false);
+        $("#moReferencia").prop("readonly", false);
+        $("#moTelefone").prop("readonly", false);
+        $("#moCelular").prop("readonly", false);
+        $("#moEmail").prop("readonly", false);
+        $("#rFoto").prop("hidden", false);
+        $("#divBtnEditar").prop("hidden", true);
+        $("#divEditar").prop("hidden", false);
+    }
+
+    function mostrarDados(){
+        var codCliente = $("#suaConta").data('id');
+        $.ajax({
+            type: "post",
+            url: "https://rentalsystempm.000webhostapp.com/php/cliente/mostrarClienteCompleto.php",
+            data: "codCliente="+codCliente,
+            dataType: "json",
+            success: function(data){
+                $("#moNome").val(data.cliente.nome);
+                $("#moEndereco").val(data.cliente.endereco);
+                $("#moNumero").val(parseInt(data.cliente.numero));
+                $("#moBairro").val(data.cliente.bairro);
+                $("#moCidade").val(data.cliente.cidade);
+                $("#moUF").val(data.cliente.UF);
+                $("#moReferencia").val(data.cliente.referencia);
+                $("#moTelefone").val(data.cliente.telefone);
+                $("#moCelular").val(data.cliente.celular);
+                $("#moEmail").val(data.cliente.email);
+                $("#moCPF").val(data.cliente.CPF);
+                $("#moRG").val(data.cliente.RG);
+            },
+            error: function(data){
+                alert('Error:', data);
+            }
+        });
+    }
+
+    $(document).on("click", "#btnDados", function(){
+        desabilita();
+        mostrarDados();
+    });
+
+    $(document).on("click", "#btnEditarConta", function(){
+        habilita();
+    });
+
+    $(document).on("click", "#btnCancelar", function(){
+        desabilita();
+    });
+
 </script>
 
 </html>
