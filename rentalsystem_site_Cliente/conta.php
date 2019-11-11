@@ -62,7 +62,7 @@
             <div class="col-md-3">
                 <div class="card" style="padding-bottom: 10px;">
                     <h2 data-id="<?php echo $_SESSION['codigo'] ?>" id="suaConta">Sua conta</h2>
-                    <img src="img/pessoa.png" style="width:100%" data-toggle="modal" data-target="#moAltFoto">
+                    <img src="" style="max-height:200px; max-width: 90%" id="fotoCliente">
                     <h2 id="nome">Nome</h2>
                     <p class="title" id="contaCliente">Conta Cliente</p>
                     <p id="telefone">Telefone: </p>
@@ -135,7 +135,7 @@
                         </div>
                         <div class="col-md-6">
                             <label for="">Celular:</label>
-                            <input class="form-control" type="number" id="moCelular" readonly>
+                            <input class="form-control" type="text" id="moCelular" readonly>
                         </div>
                     </div>
 
@@ -153,7 +153,7 @@
                         </div>
                         <div class="col-md-6">
                             <label for="">RG:</label>
-                            <input class="form-control" type="number" id="moRG" readonly>
+                            <input class="form-control" type="text" id="moRG" readonly>
                         </div>
                     </div>
 
@@ -252,36 +252,10 @@
         $("#divEditar").prop("hidden", false);
     }
 
-    function mostrarDados(){
-        var codCliente = $("#suaConta").data('id');
-        $.ajax({
-            type: "post",
-            url: "https://rentalsystempm.000webhostapp.com/php/cliente/mostrarClienteCompleto.php",
-            data: "codCliente="+codCliente,
-            dataType: "json",
-            success: function(data){
-                $("#moNome").val(data.cliente.nome);
-                $("#moEndereco").val(data.cliente.endereco);
-                $("#moNumero").val(parseInt(data.cliente.numero));
-                $("#moBairro").val(data.cliente.bairro);
-                $("#moCidade").val(data.cliente.cidade);
-                $("#moUF").val(data.cliente.UF);
-                $("#moReferencia").val(data.cliente.referencia);
-                $("#moTelefone").val(data.cliente.telefone);
-                $("#moCelular").val(data.cliente.celular);
-                $("#moEmail").val(data.cliente.email);
-                $("#moCPF").val(data.cliente.CPF);
-                $("#moRG").val(data.cliente.RG);
-            },
-            error: function(data){
-                alert('Error:', data);
-            }
-        });
-    }
+    
 
     $(document).on("click", "#btnDados", function(){
         desabilita();
-        mostrarDados();
     });
 
     $(document).on("click", "#btnEditarConta", function(){
@@ -290,6 +264,45 @@
 
     $(document).on("click", "#btnCancelar", function(){
         desabilita();
+    });
+
+    $(document).on("click", "#btnSalvarEditar", function(){
+        var form_data = new FormData();
+        form_data.append("codCliente", $("#suaConta").data('id'));
+        form_data.append("endereco", $("#moEndereco").val());
+        form_data.append("numero", $("#moNumero").val());
+        form_data.append("bairro", $("#moBairro").val());
+        form_data.append("cidade", $("#moCidade").val());
+        form_data.append("UF", $("#moUF").val());
+        form_data.append("referencia", $("#moReferencia").val());
+        form_data.append("telefone", $("#moTelefone").val());
+        form_data.append("celular", $("#moCelular").val());
+        form_data.append("email", $("#moEmail").val());
+        if(document.getElementById('foto').value != ''){
+            var prop = document.getElementById('foto').files[0];
+            var nome_imagem = prop.name;
+            var extensao_imagem = nome_imagem.split('.').pop().toLowerCase();
+
+            if (jQuery.inArray(extensao_imagem, ['png', 'jpg', 'jpeg']) == -1) {
+            navigator.notification.alert("Imagem inválida");
+            } else {
+                form_data.append("foto", prop);
+            }
+        }
+        $.ajax({
+            type: "post",
+            url: "../../php/cliente/alterarCliente.php",
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function(data){
+                location.reload();
+            },
+            error: function(data){
+                alert(data);
+            }
+        });
     });
 
 </script>

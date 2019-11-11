@@ -12,19 +12,20 @@
     while($linha = mysqli_fetch_assoc($resultado)){
         $registro = array(
             'cliente' => array(
-                'codigo' => strval($linha['cd_cliente']),
-                'nome' => strval($linha['nm_cliente']),
-                'endereco' => strval($linha['nm_endereco']),
-                'numero' => strval($linha['nr_numeroEndereco']),
-                'bairro' => strval($linha['nm_bairro']),
-                'cidade' => strval($linha['nm_cidade']),
-                'UF' => strval($linha['nm_UF']),
-                'referencia' => strval($linha['ds_referencia']),
-                'telefone' => strval($linha['nr_telefone']),
-                'celular' => strval($linha['nr_celular']),
-                'email' => strval($linha['ds_email']),
-                'CPF' => strval($linha['nr_CPF']),
-                'RG' => strval($linha['nr_RG'])
+                'codigo' => $linha['cd_cliente'],
+                'nome' => $linha['nm_cliente'],
+                'endereco' => $linha['nm_endereco'],
+                'numero' => $linha['nr_numeroEndereco'],
+                'bairro' => $linha['nm_bairro'],
+                'cidade' => $linha['nm_cidade'],
+                'UF' => $linha['nm_UF'],
+                'referencia' => $linha['nm_referencia'],
+                'telefone' => $linha['nr_telefone'],
+                'celular' => $linha['nr_celular'],
+                'email' => $linha['ds_email'],
+                'CPF' => $linha['nr_CPF'],
+                'RG' => $linha['nr_RG'],
+                'foto' => $linha['uri_imagem'],
             )
         );
     }

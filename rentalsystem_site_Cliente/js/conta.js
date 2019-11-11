@@ -2,16 +2,51 @@ function carregaPagConta(){
     var codigo = $("#suaConta").data('id');
     $.ajax({
         type: "post",
-        url: "https://rentalsystempm.000webhostapp.com/php/cliente/mostrarClienteBasico.php",
+        url: "https://rentalsystempm.000webhostapp.com/php/cliente/mostrarClienteCompleto.php",
         data: "codCliente="+codigo,
         dataType: "json",
         success: function(data){
             document.getElementById('nome').textContent = data.cliente.nome;
             document.getElementById('telefone').textContent += ("\n" + data.cliente.telefone);
-            document.getElementById('endereco').textContent += ("\n" + data.cliente.endereco);
+            document.getElementById('endereco').textContent += ("\n" + data.cliente.endereco + ", " + data.cliente.numero + ", " + data.cliente.bairro + ", " + data.cliente.cidade + ", " + data.cliente.UF);
+            //Dados
+            $("#moNome").val(data.cliente.nome);
+            $("#moEndereco").val(data.cliente.endereco);
+            $("#moNumero").val(data.cliente.numero);
+            $("#moBairro").val(data.cliente.bairro);
+            $("#moCidade").val(data.cliente.cidade);
+            $("#moUF").val(data.cliente.UF);
+            $("#moReferencia").val(data.cliente.referencia);
+            $("#moTelefone").val(data.cliente.telefone);
+            $("#moCelular").val(data.cliente.celular);
+            $("#moEmail").val(data.cliente.email);
+            $("#moCPF").val(data.cliente.CPF);
+            $("#moRG").val(data.cliente.RG);
+            if(data.cliente.foto != ''){
+                $("#fotoCliente").attr("src", "https://rentalsystempm.000webhostapp.com/" + data.cliente.foto);
+            }
+            else{
+                $("#fotoCliente").attr("src", "img/pessoa.png");
+            }
         },
         error: function(data){
             alert(data);
+        }
+    });
+}
+
+function mostrarDados(){
+    var codCliente = $("#suaConta").data('id');
+    $.ajax({
+        type: "post",
+        url: "https://rentalsystempm.000webhostapp.com/php/cliente/mostrarClienteCompleto.php",
+        data: "codCliente="+codCliente,
+        dataType: "json",
+        success: function(data){
+            
+        },
+        error: function(data){
+            alert('Error:', data);
         }
     });
 }
