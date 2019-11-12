@@ -190,7 +190,7 @@ function enviarPedido(){
         cache: false,
         processData: false,
         success: function(data){
-            alert("Certo: "+ form_data);
+            alert("Certo: "+ data);
            // location.reload();
         },
         error: function(data){
