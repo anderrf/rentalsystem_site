@@ -69,9 +69,9 @@
             <div class="col-md-6">
                 <form>
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Pesquise por pedidos">
+                        <input type="text" class="form-control" placeholder="Pesquise por pedidos" id="pesqPedido">
                         <div class="input-group-btn">
-                            <button class="btn btn-default" type="submit">
+                            <button class="btn btn-default" type="submit" id="btnPesqPedido">
                                 <i class="glyphicon glyphicon-search"></i>
                             </button>
                         </div>
@@ -99,4 +99,9 @@
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/pedido.js"></script>
+<script>
+    $(document).ready(function(){
+        listarPedido();
+    });
+</script>
 </html>

@@ -61,13 +61,12 @@
     </div>
   </nav>
 
-  <div class="container" id="cont">
+  <div class="container" id="cont" style="background-color: transparent">
     <div class="col-md-12">
       <div class="row ficha">
         <div class="col-md-12">
           <fieldset>
             <p class="textao" id="descPedido">
-              AVISO: O endereço descrito deverá ser do local de entrega e retirada do pedido.
             </p>
           </fieldset>
         </div>
@@ -77,7 +76,7 @@
     </div>
   </div>
 
-  <div class="pedido-box">
+  <div class="pedido-box" style="min-width: 50vw">
     <h2 id="hCodigo" data-id="<?php echo $codigo ?>">Faça seu pedido</h2>
 
     <div id="ped1">
@@ -124,6 +123,18 @@
         <i class="fa fa-list-ol"></i>
         <input type="number" placeholder="Jogos" name="" value="" id="pedJogos" maxlength="2">
       </div>
+    </div>
+
+    <div id="ped2_1">
+      <h1>Deseja cadeiras e mesas adicionais?</h1>
+      <div class="col-md-6">
+        <input class="btnContato" type="radio" name="adicional" value="sim" id="adicional">Sim
+        <input class="btnContato" type="radio" name="adicional" value="nao" id="adicional">Não
+      </div>
+    </div>
+
+
+    <div id="ped2_2">
       <div class="textbox">
         <i class="fa fa-calculator"></i>
         <input type="number" placeholder="Mesas" name="" value="" id="pedMesas" maxlength="2">
@@ -162,6 +173,13 @@
 
               </div>
             </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <input type="checkbox" value="negarToalhas" id="negarToalhas" name="negarToalhas">Não preciso de toalhas
+              </div>
+            </div>
+
           </div>
 
 

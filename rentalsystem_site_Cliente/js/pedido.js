@@ -45,34 +45,64 @@ function verificaCadPedido() {
                 alert("Preencha todos os campos.");
                 $("#pedJogos").prop("focus", true);
             }
-            else if ($("#pedMesas").val() === '') {
-                alert("Preencha todos os campos.");
-                $("#pedMesas").prop("focus", true);
-            }
-            else if ($("#pedCadeiras").val() === '') {
-                alert("Preencha todos os campos.");
-                $("#pedCadeiras").prop("focus", true);
-            }
             else {
                 indexPedido++;
                 dividePedido(indexPedido);
             }
             break;
 
-        case 3:
-            if ($("#pedCorToalha").val() === '') {
-                alert("Preencha todos os campos.");
-                $("#pedCorToalha").prop("focus", true);
+
+            case 3:
+                var btnAdd = document.getElementById('adicional').value;
+                if(btnAdd == "sim"){
+                    indexPedido++;
+                    dividePedido(indexPedido);
+                }
+                else if(btnAdd == "nao") {
+                    indexPedido = indexPedido + 2;
+                    dividePedido(indexPedido);
+                }
+                else{
+                    alert("Informe sua escolha.");
+                }
+                break;
+
+
+            case 4:
+                if ($("#pedMesas").val() === '') {
+                    alert("Preencha todos os campos.");
+                    $("#pedMesas").prop("focus", true);
+                }
+                else if ($("#pedCadeiras").val() === '') {
+                    alert("Preencha todos os campos.");
+                    $("#pedCadeiras").prop("focus", true);
+                }
+                else {
+                    indexPedido++;
+                    dividePedido(indexPedido);
+                }
+                break;
+
+        case 5:
+            if(document.getElementById('negarToalhas').checked){
+                if ($("#pedCorToalha").val() === '') {
+                    alert("Preencha todos os campos.");
+                    $("#pedCorToalha").prop("focus", true);
+                }
+                else if ($("#pedQtToalha").val() === '') {
+                    alert("Preencha todos os campos.");
+                    $("#pedQtToalha").prop("focus", true);
+                }
+                else {
+                    indexPedido++;
+                    dividePedido(indexPedido);
+                }
             }
-            else if ($("#pedQtToalha").val() === '') {
-                alert("Preencha todos os campos.");
-                $("#pedQtToalha").prop("focus", true);
-            }
-            else {
+            else{
                 indexPedido++;
                 dividePedido(indexPedido);
             }
-            break;
+        break;
 
     }
 }
@@ -81,9 +111,10 @@ function dividePedido() {
     switch (indexPedido) {
 
         case 1:
-            document.getElementById('descPedido').textContent = 'AVISO: O endereço descrito deverá ser do local de entrega e retirada do pedido.';
             $("#ped1").prop("hidden", false);
             $("#ped2").prop("hidden", true);
+            $("#ped2_1").prop("hidden", true);
+            $("#ped2_2").prop("hidden", true);
             $("#ped3").prop("hidden", true);
             $("#ped4").prop("hidden", true);
             $("#cadPedidoProx").prop("hidden", false);
@@ -91,9 +122,10 @@ function dividePedido() {
             break;
 
         case 2:
-            document.getElementById('descPedido').textContent = 'AVISO: Os jogos são formados por 4 cadeiras e 1 mesa, na qual o valor da mesa é de R$5,00 e a cadeira R$2,00, dando um total por jogo de R$13,00. Você tera a opção de alugar cadeiras e mesas adicionais nos campos "Mesas" e "Cadeiras" caso necessario. TODO VALOR PODERÁ SER NEGOCIADO COM OS PROPRIETÁRIOS.';
             $("#ped1").prop("hidden", true);
             $("#ped2").prop("hidden", false);
+            $("#ped2_1").prop("hidden", true);
+            $("#ped2_2").prop("hidden", true);
             $("#ped3").prop("hidden", true);
             $("#ped4").prop("hidden", true);
             $("#cadPedidoProx").prop("hidden", false);
@@ -101,24 +133,48 @@ function dividePedido() {
             break;
 
         case 3:
-            document.getElementById('descPedido').textContent = 'AVISO: Você poderá alugar toalhas para decoração das mesas, TODO VALOR PODERÁ SER NEGOCIADO COM OS PROPRIETÁRIOS.';
             $("#ped1").prop("hidden", true);
             $("#ped2").prop("hidden", true);
-            $("#ped3").prop("hidden", false);
+            $("#ped2_1").prop("hidden", false);
+            $("#ped2_2").prop("hidden", true);
+            $("#ped3").prop("hidden", true);
             $("#ped4").prop("hidden", true);
             $("#cadPedidoProx").prop("hidden", false);
             $("#btnEnviarPedido").prop("hidden", true);
             break;
 
         case 4:
-            document.getElementById('descPedido').textContent = 'AVISO: Você poderá realizar o pedido com no mínimo 01 dia de antecedência.';
             $("#ped1").prop("hidden", true);
             $("#ped2").prop("hidden", true);
+            $("#ped2_1").prop("hidden", true);
+            $("#ped2_2").prop("hidden", false);
+            $("#ped3").prop("hidden", true);
+            $("#ped4").prop("hidden", true);
+            $("#cadPedidoProx").prop("hidden", false);
+            $("#btnEnviarPedido").prop("hidden", true);
+        break;
+
+        case 5:
+            $("#ped1").prop("hidden", true);
+            $("#ped2").prop("hidden", true);
+            $("#ped2_1").prop("hidden", true);
+            $("#ped2_2").prop("hidden", true);
+            $("#ped3").prop("hidden", false);
+            $("#ped4").prop("hidden", true);
+            $("#cadPedidoProx").prop("hidden", false);
+            $("#btnEnviarPedido").prop("hidden", true);
+        break;
+
+        case 6:
+            $("#ped1").prop("hidden", true);
+            $("#ped2").prop("hidden", true);
+            $("#ped2_1").prop("hidden", true);
+            $("#ped2_2").prop("hidden", true);
             $("#ped3").prop("hidden", true);
             $("#ped4").prop("hidden", false);
             $("#cadPedidoProx").prop("hidden", true);
             $("#btnEnviarPedido").prop("hidden", false);
-            break;
+        break;
 
     }
 }
@@ -191,7 +247,7 @@ function enviarPedido(){
         processData: false,
         success: function(data){
             alert("Certo: "+ data);
-           // location.reload();
+            location.reload();
         },
         error: function(data){
             alert("Erro: "+data);
