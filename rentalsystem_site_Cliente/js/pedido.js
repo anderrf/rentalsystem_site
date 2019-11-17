@@ -38,7 +38,7 @@ function verificaCadPedido() {
                 indexPedido++;
                 dividePedido(indexPedido);
             }
-            break;
+        break;
 
         case 2:
             if ($("#pedJogos").val() === '') {
@@ -49,23 +49,12 @@ function verificaCadPedido() {
                 indexPedido++;
                 dividePedido(indexPedido);
             }
-            break;
+        break;
 
 
-            case 3:
-                var btnAdd = document.getElementById('adicional').value;
-                if(btnAdd == "sim"){
-                    indexPedido++;
-                    dividePedido(indexPedido);
-                }
-                else if(btnAdd == "nao") {
-                    indexPedido = indexPedido + 2;
-                    dividePedido(indexPedido);
-                }
-                else{
-                    alert("Informe sua escolha.");
-                }
-                break;
+        case 3:
+            alert($("#adicional").val());
+        break;
 
 
             case 4:
@@ -111,6 +100,7 @@ function dividePedido() {
     switch (indexPedido) {
 
         case 1:
+            $("#hCodigo").val("Informe seu endereço:");
             $("#ped1").prop("hidden", false);
             $("#ped2").prop("hidden", true);
             $("#ped2_1").prop("hidden", true);

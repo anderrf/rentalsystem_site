@@ -4,15 +4,26 @@ function listarPedido(){
         url: "../../../php/pedido/listarPedidoTd.php",
         dataType: "json",
         success: function(data){
-            console.log(data);
-            var regPedido = "<tr><th>Cliente:</th><th>Endereço:</th><th>Data:</th><th>Valor:</th></tr>";
-            $.each(data.cliente, function (i, dados) {
-                regPedido += "<tr><td class='clPedido'>"+dados.cliente+"</td><td class='endPedido'>"+dados.endereco+"</td><td class='dtPedido'>"+dados.dataEntrega+"</td><td class='vlPedido'>R$ "+dados.valor+"</td></tr>";
+            var regPedido = "<tr><th>Cliente:</th><th>Endereço:</th><th>Feito em:</th><th>Entrega:</th><th>Valor:</th></tr>";
+            $.each(data.pedido, function (i, dados) {
+                if(dados.status == 1){
+                    regPedido += "<tr class='itemPedido' data-id='"+dados.codigo+"' value='"+dados.status+"' style='background-color: #eee' data-toggle='modal' data-target='#modalPedido'><td class='clPedido'>"+dados.cliente+"</td><td class='endPedido'>"+dados.endereco+"</td><td class='dtPedido'>"+dados.dataPedido+"</td><td class='dtEntrega'>"+dados.dataEntrega+"</td><td class='vlPedido'>R$ "+dados.valor+"</td></tr>";
+                }
+                else if(dados.status == 2){
+                    regPedido += "<tr class='itemPedido' data-id='"+dados.codigo+"' value='"+dados.status+"' style='background-color: #ffff5e' data-toggle='modal' data-target='#modalPedido'><td class='clPedido'>"+dados.cliente+"</td><td class='endPedido'>"+dados.endereco+"</td><td class='dtPedido'>"+dados.dataPedido+"</td><td class='dtEntrega'>"+dados.dataEntrega+"</td><td class='vlPedido'>R$ "+dados.valor+"</td></tr>";
+                }
+                else if(dados.status == 3){
+                    regPedido += "<tr class='itemPedido' data-id='"+dados.codigo+"' value='"+dados.status+"' style='background-color: #99ff66' data-toggle='modal' data-target='#modalPedido'><td class='clPedido'>"+dados.cliente+"</td><td class='endPedido'>"+dados.endereco+"</td><td class='dtPedido'>"+dados.dataPedido+"</td><td class='dtEntrega'>"+dados.dataEntrega+"</td><td class='vlPedido'>R$ "+dados.valor+"</td></tr>";
+                }
+                else if(dados.status == 4){
+                    regPedido += "<tr class='itemPedido' data-id='"+dados.codigo+"' value='"+dados.status+"' style='background-color: #F08080' data-toggle='modal' data-target='#modalPedido'><td class='clPedido'>"+dados.cliente+"</td><td class='endPedido'>"+dados.endereco+"</td><td class='dtPedido'>"+dados.dataPedido+"</td><td class='dtEntrega'>"+dados.dataEntrega+"</td><td class='vlPedido'>R$ "+dados.valor+"</td></tr>";
+                }
+                
             });
             $("#tbPedidos").html(regPedido);
         },
         error: function(data){
-            console.log(data);
+            alert(data);
         }
     });
 }
@@ -29,9 +40,21 @@ $(document).on("click", "#btnPesqPedido", function(){
             data: "pesquisa="+pesquisa,
             dataType: "json",
             success: function(data){
-                var regPedido = "<tr><th>Cliente:</th><th>Endereço:</th><th>Data:</th><th>Valor:</th></tr>";
-                $.each(data.cliente, function (i, dados) {
-                    regPedido += "<tr><td class='clPedido'>"+dados.nome+"</td><td class='endPedido'>"+dados.endereco+"</td><td class='dtPedido'>"+dados.date+"</td><td class='vlPedido'>R$ "+dados.valor+"</td></tr>";
+                var regPedido = "<tr><th>Cliente:</th><th>Endereço:</th><th>Feito em:</th><th>Entrega:</th><th>Valor:</th></tr>";
+                $.each(data.pedido, function (i, dados) {
+                    if(dados.status == 1){
+                        regPedido += "<tr class='itemPedido' data-id='"+dados.codigo+"' value='"+dados.status+"' style='background-color: #eee' data-toggle='modal' data-target='#modalPedido'><td class='clPedido'>"+dados.cliente+"</td><td class='endPedido'>"+dados.endereco+"</td><td class='dtPedido'>"+dados.dataPedido+"</td><td class='dtEntrega'>"+dados.dataEntrega+"</td><td class='vlPedido'>R$ "+dados.valor+"</td></tr>";
+                    }
+                    else if(dados.status == 2){
+                        regPedido += "<tr class='itemPedido' data-id='"+dados.codigo+"' value='"+dados.status+"' style='background-color: #ffff5e' data-toggle='modal' data-target='#modalPedido'><td class='clPedido'>"+dados.cliente+"</td><td class='endPedido'>"+dados.endereco+"</td><td class='dtPedido'>"+dados.dataPedido+"</td><td class='dtEntrega'>"+dados.dataEntrega+"</td><td class='vlPedido'>R$ "+dados.valor+"</td></tr>";
+                    }
+                    else if(dados.status == 3){
+                        regPedido += "<tr class='itemPedido' data-id='"+dados.codigo+"' value='"+dados.status+"' style='background-color: #99ff66' data-toggle='modal' data-target='#modalPedido'><td class='clPedido'>"+dados.cliente+"</td><td class='endPedido'>"+dados.endereco+"</td><td class='dtPedido'>"+dados.dataPedido+"</td><td class='dtEntrega'>"+dados.dataEntrega+"</td><td class='vlPedido'>R$ "+dados.valor+"</td></tr>";
+                    }
+                    else if(dados.status == 4){
+                        regPedido += "<tr class='itemPedido' data-id='"+dados.codigo+"' value='"+dados.status+"' style='background-color: #F08080' data-toggle='modal' data-target='#modalPedido'><td class='clPedido'>"+dados.cliente+"</td><td class='endPedido'>"+dados.endereco+"</td><td class='dtPedido'>"+dados.dataPedido+"</td><td class='dtEntrega'>"+dados.dataEntrega+"</td><td class='vlPedido'>R$ "+dados.valor+"</td></tr>";
+                    }
+                    
                 });
                 $("#tbPedidos").html(regPedido);
             },
@@ -41,3 +64,46 @@ $(document).on("click", "#btnPesqPedido", function(){
         });
     }
 });
+
+$(document).on("click", ".itemPedido", function(){
+    var codigo = $(this).data('id');
+    var status = $(this).attr("value");
+    var contPedido = "";
+    document.getElementById('hPedido').textContent = "Pedido:";
+    contPedido += "<div class='row'><div class='col-md-12'><label for=''>Nome do cliente:</label><input class='form-control' type='text' id='nome' readonly></div></div><div class='row'><div class='col-md-9'><label for=''>Endereço:</label><input class='form-control' type='text' id='endereco' readonly></div><div class='col-md-3'><label for=''>Número:</label><input class='form-control' type='number' id='numero' readonly></div></div><div class='row'><div class='col-md-5'><label for=''>Bairro:</label><input class='form-control' type='text' id='bairro' readonly></div><div class='col-md-5'><label for=''>Cidade:</label><input class='form-control' type='text' id='cidade' readonly></div><div class='col-md-2'><label for=''>UF:</label><input class='form-control' type='text' id='UF' readonly></div></div><div class='row'><div class='col-md-12'><label for=''>Referência:</label><input class='form-control' type='text' id='referencia' readonly></div></div><div class='row'><div class='col-md-12'><h3>Entrega:</h3><div class='row'><div class='col-md-6'><label for=''>Data:</label><input class='form-control' type='date' id='dataEntrega' readonly></div><div class='col-md-6'><label for=''>Horário:</label><input class='form-control' type='time' id='horaEntrega' readonly></div></div></div></div><div class='row'><div class='col-md-12'><h3>Retirada:</h3><div class='row'><div class='col-md-6'><label for=''>Data:</label><input class='form-control' type='date' id='dataRetirada' readonly></div><div class='col-md-6'><label for=''>Horário:</label><input class='form-control' type='time' id='horaRetirada' readonly></div></div></div></div><div class='row'><div class='col-md-12'><label for=''>Valor:</label><input class='form-control' type='text' id='valor' readonly></div></div>";
+    $("#moInner").html(contPedido);
+    var ftPedido = "";
+    if(status == 1){
+        ftPedido += "<button class='btn btn-success' type='button' id='btnAceitarPedido'>Aceitar</button><button class='btn btn-danger' type='button' id='btnRecusarPedido'>Recusar</button>";
+        $("#moFooter").html(ftPedido);
+    }
+    else if(status == 2){
+        ftPedido += "<button class='btn btn-success' type='button' id='btnConcluirPedido'>Concluir</button>";
+        $("#moFooter").html(ftPedido);
+    }
+    else{
+        $("#moFooter").html('');
+    }
+    setModal(codigo, status);
+});
+
+function setModal(codigo){
+    $.ajax({
+        type: "post",
+        url: "../../../php/pedido/mostrarPedidoCompleto.php",
+        data: "codigo="+codigo,
+        dataType: "json",
+        success: function(data){
+            $("#nome").val(data.pedido.cliente);
+            $("#endereco").val(data.pedido.endereco);
+            $("#numero").val(data.pedido.numero);
+            $("#bairro").val(data.pedido.bairro);
+            $("#cidade").val(data.pedido.cidade);
+            $("#UF").val(data.pedido.UF);
+            $("#referencia").val(data.pedido.referencia);
+        },
+        error: function(data){
+            alert(data);
+        }
+    });
+}

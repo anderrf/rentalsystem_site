@@ -89,6 +89,26 @@
             </div>
         </div>
 
+        <!-- Modal de consultar pedido -->
+        <div id="modalPedido" class="modal fade" role="dialog" value="">
+            <div class="modal-dialog">
+        <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h3 class="modal-title" id="hPedido"></h3>
+                    </div>
+                    <div class="modal-body">
+                        <div id="moInner">
+                        </div>
+                    </div>
+                    <div class="modal-footer" id="moFooter">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 

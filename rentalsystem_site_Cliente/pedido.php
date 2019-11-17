@@ -124,19 +124,10 @@
     </div>
 
     <div id="ped2_1">
-      <h1>Deseja cadeiras e mesas adicionais?</h1>
-      <div class="col-md-6">
-     <label>
-    <input type="radio" class="option-input radio" id="adicional" name="adicional" style="margin-left: 40px; margin-top: -200px;" checked />
-    SIM
-    </label>
-    </div>
-    <div class="col-md-6">
-    <label>
-    <input type="radio" class="option-input radio" id="adicional" name="adicional" style="margin-left: 200px; margin-top: -200px;"/>
-    NÃO
-    </label>
-    </div>
+      <select class="form-control" name="adicional" id="adicional" style="color: black">
+        <option value="Sim">Sim</option>
+        <option value="Não">Não</option>
+      </select>
     </div>
  
   

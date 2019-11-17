@@ -81,22 +81,6 @@ table tr:nth-child(odd) {
   background-color: #fff;
 }
 
-.clPedido{
-  width: 40%;
-}
-
-.endPedido{
-  width: 40%;
-}
-
-.dtPedido{
-  width: 10%;
-}
-
-.vlPedido{
-  width: 10%;
-}
-
 .input-group{
   margin-top: 20px;
 }
