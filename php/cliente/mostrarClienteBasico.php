@@ -5,7 +5,7 @@
 
     $codCliente = $_POST['codCliente'];
 
-    $query = "SELECT cd_cliente, nm_cliente, nr_telefone, CONCAT(nm_endereco, ', ', nr_numeroEndereco, ', ', nm_bairro, ', ', nm_cidade, ', ', nm_UF) AS ds_endereco, ds_email FROM tb_Cliente WHERE cd_cliente = '$codCliente' AND ds_status = true AND id_nivel = 2";
+    $query = "SELECT cd_cliente, nm_cliente, nr_telefone, CONCAT(nm_endereco, ', ', nr_numeroEndereco, ', ', nm_bairro, ', ', nm_cidade, ', ', nm_UF) AS ds_endereco, ds_email, uri_imagem FROM tb_Cliente WHERE cd_cliente = '$codCliente' AND ds_status = true AND id_nivel = 2";
     $resultado = mysqli_query($conecta, $query);
     
     
@@ -16,7 +16,8 @@
                 'nome' => $linha['nm_cliente'],
                 'telefone' => $linha['nr_telefone'],
                 'endereco' => $linha['ds_endereco'],
-                'email' => $linha['ds_email']
+                'email' => $linha['ds_email'],
+                'foto' => $linha['uri_imagem']
             )
         );
     }

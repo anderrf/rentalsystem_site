@@ -55,7 +55,7 @@
         <p></p>
     </div>
 
-    <div class="container">
+    <div class="container" style="margin-top: 100px;">
         <div class="col-md-6">
             <div class="flip-card">
                 <div class="flip-card-inner">

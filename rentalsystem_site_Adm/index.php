@@ -80,8 +80,8 @@
         </div>
     </section>
     <div class="container">
-        <div class="col-md-6">
-            <img src="media/img/cadeira_mesas.png" alt="">
+        <div class="col-md-6" style="text-align: center">
+            <img src="img/cadeira_mesas.png" alt="" style="width: 80%">
         </div>
         <div class="col-md-6">
 

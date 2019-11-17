@@ -46,16 +46,16 @@ function setModal(codCliente){
     var contCliente = "";
     contCliente += "<div class='row'><div class='col-md-12'><label for=''>Nome:</label><input readonly class='form-control' type='text' id='nome'></div></div><div class='row'><div class='col-md-9'><label for=''>Endereço:</label><input readonly class='form-control' type='text' id='endereco'></div><div class='col-md-3'><label for=''>Nº:</label><input readonly class='form-control' type='number' id='numero'></div></div><div class='row'><div class='col-md-5'><label for=''>Bairro:</label><input readonly class='form-control' type='text' id='bairro'></div><div class='col-md-5'><label for=''>Cidade:</label><input readonly class='form-control' type='text' id='cidade'></div><div class='col-md-2'><label for=''>UF:</label><input readonly class='form-control' type='text' id='UF'></div></div><div class='row'><div class='col-md-12'><label for=''>Referência:</label><input readonly class='form-control' type='text' id='referencia'></div></div><div class='row'><div class='col-md-6'><label for=''>Telefone:</label><input readonly class='form-control' type='text' id='telefone'></div><div class='col-md-6'><label for=''>Celular:</label><input readonly class='form-control' type='text' id='celular'></div></div><div class='row'><div class='col-md-12'><label for=''>E-mail:</label><input readonly class='form-control' type='text' id='email'></div></div><div class='row'><div class='col-md-6'><label for=''>CPF:</label><input readonly class='form-control' type='text' id='CPF'></div><div class='col-md-6'><label for=''>RG:</label><input readonly class='form-control' type='text' id='RG'></div></div>";
     $("#moInner").html(contCliente);
-    var ftCliente = "";
-    ftCliente += "<button class='btn btn-danger' id='btnDeletar' onclick='deletarCliente("+codCliente+")'>Deletar</button>"
-    $("#moFooter").html(ftCliente);
+    //var ftCliente = "";
+    //ftCliente += "<button class='btn btn-danger' id='btnDeletar' onclick='deletarCliente("+codCliente+")'>Deletar</button>"
+    //$("#moFooter").html(ftCliente);
     $.ajax({
         type: "post",
         url: "https://rentalsystempm.000webhostapp.com/php/cliente/mostrarClienteCompleto.php",
         data: "codCliente=" + codCliente,
         dataType: "json",
         success: function (data) {
-          document.getElementById('nome').textContent = (data.cliente.nome);
+          $("#nome").val(data.cliente.nome);
           $("#endereco").val(data.cliente.endereco);
           $("#numero").val(data.cliente.numero);
           $("#bairro").val(data.cliente.bairro);
@@ -74,6 +74,6 @@ function setModal(codCliente){
       });
 }
 
-function deletarCliente(codCliente){
+/*function deletarCliente(codCliente){
 
-}
+}*/

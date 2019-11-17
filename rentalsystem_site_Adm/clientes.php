@@ -130,7 +130,7 @@
                         </div>
                     </div>
                     <div class="modal-footer" id="moFooter">
-                        <button class="btn btn-danger" id="btnDeletar">Deletar</button>
+                        <!--<button class="btn btn-danger" id="btnDeletar">Deletar</button>-->
                     </div>
                 </div>
             </div>

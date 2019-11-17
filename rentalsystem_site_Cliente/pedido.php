@@ -89,7 +89,6 @@
         </div>
         <div class="col-md-3">
           <div class="textbox">
-            <i class="fa fa-home"></i>
             <input type="number" placeholder="Nº" name="" value="" id="pedNumero" maxlength="4">
           </div>
         </div>
@@ -107,7 +106,6 @@
         </div>
         <div class="col-md-3">
           <div class="textbox">
-            <i class="fa fa-home"></i>
             <input type="text" placeholder="UF" name="" value="" id="pedUF" maxlength="2">
           </div>
         </div>
@@ -121,19 +119,28 @@
     <div id="ped2">
       <div class="textbox">
         <i class="fa fa-list-ol"></i>
-        <input type="number" placeholder="Jogos" name="" value="" id="pedJogos" maxlength="2">
+        <input type="number" placeholder="Jogos (conjunto de 01 mesa e 04 cadeiras)" name="" value="" id="pedJogos" maxlength="2">
       </div>
     </div>
 
     <div id="ped2_1">
       <h1>Deseja cadeiras e mesas adicionais?</h1>
       <div class="col-md-6">
-        <input class="btnContato" type="radio" name="adicional" value="sim" id="adicional">Sim
-        <input class="btnContato" type="radio" name="adicional" value="nao" id="adicional">Não
-      </div>
+     <label>
+    <input type="radio" class="option-input radio" id="adicional" name="adicional" style="margin-left: 40px; margin-top: -200px;" checked />
+    SIM
+    </label>
     </div>
-
-
+    <div class="col-md-6">
+    <label>
+    <input type="radio" class="option-input radio" id="adicional" name="adicional" style="margin-left: 200px; margin-top: -200px;"/>
+    NÃO
+    </label>
+    </div>
+    </div>
+ 
+  
+    
     <div id="ped2_2">
       <div class="textbox">
         <i class="fa fa-calculator"></i>
@@ -175,8 +182,11 @@
             </div>
 
             <div class="row">
-              <div class="col-md-12">
-                <input type="checkbox" value="negarToalhas" id="negarToalhas" name="negarToalhas">Não preciso de toalhas
+              <div class="col-md-2">
+                <input type="checkbox" value="negarToalhas" id="negarToalhas" name="negarToalhas">
+              </div>
+              <div class="col-md-6">
+                <label>Não quero / não preciso de toalha(s)</label>
               </div>
             </div>
 
