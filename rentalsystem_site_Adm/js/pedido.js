@@ -70,7 +70,7 @@ $(document).on("click", ".itemPedido", function(){
     var status = $(this).attr("value");
     var contPedido = "";
     document.getElementById('hPedido').textContent = "Pedido:";
-    contPedido += "<div class='row'><div class='col-md-12'><label for=''>Nome do cliente:</label><input class='form-control' type='text' id='nome' readonly></div></div><div class='row'><div class='col-md-9'><label for=''>Endereço:</label><input class='form-control' type='text' id='endereco' readonly></div><div class='col-md-3'><label for=''>Número:</label><input class='form-control' type='number' id='numero' readonly></div></div><div class='row'><div class='col-md-5'><label for=''>Bairro:</label><input class='form-control' type='text' id='bairro' readonly></div><div class='col-md-5'><label for=''>Cidade:</label><input class='form-control' type='text' id='cidade' readonly></div><div class='col-md-2'><label for=''>UF:</label><input class='form-control' type='text' id='UF' readonly></div></div><div class='row'><div class='col-md-12'><label for=''>Referência:</label><input class='form-control' type='text' id='referencia' readonly></div></div><div class='row'><div class='col-md-12'><h3>Entrega:</h3><div class='row'><div class='col-md-6'><label for=''>Data:</label><input class='form-control' type='date' id='dataEntrega' readonly></div><div class='col-md-6'><label for=''>Horário:</label><input class='form-control' type='time' id='horaEntrega' readonly></div></div></div></div><div class='row'><div class='col-md-12'><h3>Retirada:</h3><div class='row'><div class='col-md-6'><label for=''>Data:</label><input class='form-control' type='date' id='dataRetirada' readonly></div><div class='col-md-6'><label for=''>Horário:</label><input class='form-control' type='time' id='horaRetirada' readonly></div></div></div></div><div class='row'><div class='col-md-12'><label for=''>Valor:</label><input class='form-control' type='text' id='valor' readonly></div></div>";
+    contPedido += "<div class='row'><div class='col-md-12'><label for=''>Nome do cliente:</label><input class='form-control' type='text' id='nome' readonly></div></div><div class='row'><div class='col-md-9'><label for=''>Endereço:</label><input class='form-control' type='text' id='endereco' readonly></div><div class='col-md-3'><label for=''>Número:</label><input class='form-control' type='number' id='numero' readonly></div></div><div class='row'><div class='col-md-5'><label for=''>Bairro:</label><input class='form-control' type='text' id='bairro' readonly></div><div class='col-md-5'><label for=''>Cidade:</label><input class='form-control' type='text' id='cidade' readonly></div><div class='col-md-2'><label for=''>UF:</label><input class='form-control' type='text' id='UF' readonly></div></div><div class='row'><div class='col-md-12'><label for=''>Referência:</label><input class='form-control' type='text' id='referencia' readonly></div></div><div class='row'><div class='col-md-12'><h3>Entrega:</h3><div class='row'><div class='col-md-6'><label for=''>Data:</label><input class='form-control' type='date' id='dataEntrega' readonly></div><div class='col-md-6'><label for=''>Horário:</label><input class='form-control' type='time' id='horaEntrega' readonly></div></div></div></div><div class='row'><div class='col-md-12'><h3>Retirada:</h3><div class='row'><div class='col-md-6'><label for=''>Data:</label><input class='form-control' type='date' id='dataRetirada' readonly></div><div class='col-md-6'><label for=''>Horário:</label><input class='form-control' type='time' id='horaRetirada' readonly></div></div></div></div><div class='row'><div class='col-md-6'><label for=''>Feito em:</label><input class='form-control' type='date' id='dataPedido' readonly></div><div class='col-md-6'><label for=''>Valor:</label><input class='form-control' type='text' id='valor' readonly></div></div>";
     $("#moInner").html(contPedido);
     var ftPedido = "";
     if(status == 1){
@@ -101,6 +101,63 @@ function setModal(codigo){
             $("#cidade").val(data.pedido.cidade);
             $("#UF").val(data.pedido.UF);
             $("#referencia").val(data.pedido.referencia);
+            //Entrega
+            var dataEntrega = (data.pedido.dataEntrega).toString();
+            var dateEntrega = new Date(dataEntrega);
+            if(dateEntrega.getDate() < 10){
+                var datEntrega = dateEntrega.getFullYear() + "-" + (dateEntrega.getMonth() + 1) + "-0" + dateEntrega.getDate();
+            }
+            else{
+                var datEntrega = dateEntrega.getFullYear() + "-" + (dateEntrega.getMonth() + 1) + "-" + dateEntrega.getDate();
+            }
+            $("#dataEntrega").val(datEntrega);
+            if(dateEntrega.getHours() < 10){
+                if(dateEntrega.getMinutes() < 10){
+                    var horaEntrega = "0"+dateEntrega.getHours() + ":0" + dateEntrega.getMinutes();
+                }
+                else{
+                    var horaEntrega = "0"+dateEntrega.getHours() + ":" + dateEntrega.getMinutes();
+                }
+            }
+            else{
+                if(dateEntrega.getMinutes() < 10){
+                    var horaEntrega = dateEntrega.getHours() + ":0" + dateEntrega.getMinutes();
+                }
+                else{
+                    var horaEntrega = dateEntrega.getHours() + ":" + dateEntrega.getMinutes();
+                }
+            }
+            $("#horaEntrega").val(horaEntrega);
+            //Retirada
+            var dataRetirada = (data.pedido.dataRetirada).toString();
+            var dateRetirada = new Date(dataRetirada);
+            if(dateRetirada.getDate() < 10){
+                var datRetirada = dateRetirada.getFullYear() + "-" + (dateRetirada.getMonth() + 1) + "-0" + dateRetirada.getDate();
+            }
+            else{
+                var datRetirada = dateRetirada.getFullYear() + "-" + (dateRetirada.getMonth() + 1) + "-" + dateRetirada.getDate();
+            }
+            $("#dataRetirada").val(datRetirada);
+            if(dateRetirada.getHours() < 10){
+                if(dateRetirada.getMinutes() < 10){
+                    var horaRetirada = "0"+dateRetirada.getHours() + ":0" + dateRetirada.getMinutes();
+                }
+                else{
+                    var horaRetirada = "0"+dateRetirada.getHours() + ":" + dateRetirada.getMinutes();
+                }
+            }
+            else{
+                if(dateRetirada.getMinutes() < 10){
+                    var horaRetirada = dateRetirada.getHours() + ":0" + dateRetirada.getMinutes();
+                }
+                else{
+                    var horaRetirada = dateRetirada.getHours() + ":" + dateRetirada.getMinutes();
+                }
+            }
+            $("#horaRetirada").val(horaRetirada);
+            //pedido e valor
+            $("#dataPedido").val(data.pedido.dataPedido);
+            $("#valor").val(data.pedido.valor);
         },
         error: function(data){
             alert(data);

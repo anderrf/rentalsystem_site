@@ -22,10 +22,8 @@
               'UF' => $linha['nm_UF'],
               'referencia' => $linha['ds_referencia'],
               'dataPedido' => $linha['dt_pedido'],
-              'dataEntrega' => $linha['dt_entrega']->format("Y-m-d"),
-              'horaEntrega' => $linha['dt_entrega']->format("H:i"),
-              'dataRetirada' => $linha['dt_retirada']->format("Y-m-d"),
-              'horaRetirada' => $linha['dt_retirada']->format("H:i"),
+              'dataEntrega' => $linha['dt_entrega'],
+              'dataRetirada' => $linha['dt_retirada'],
               'valor' => $linha['vl_pedido'],
               'cliente' => $linha['nm_cliente'],
               'status' => $linha['id_statusPedido']
