@@ -53,7 +53,20 @@ function verificaCadPedido() {
 
 
         case 3:
-            alert($("#adicional").val());
+            if($("#adicional").val() === ''){
+                alert("Informe sua escolha.");
+            }
+            else{
+                var adicional = $("#adicional").val();
+                if(adicional == "Sim"){
+                    indexPedido++;
+                    dividePedido(indexPedido);
+                }
+                else if(adicional == "Não"){
+                    indexPedido = indexPedido + 2;
+                    dividePedido(indexPedido);
+                }
+            }
         break;
 
 
@@ -73,7 +86,11 @@ function verificaCadPedido() {
                 break;
 
         case 5:
-            if(document.getElementById('negarToalhas').checked){
+            if(document.getElementById('negarToalhas').checked == true){
+                indexPedido++;
+                dividePedido(indexPedido);
+            }
+            else{
                 if ($("#pedCorToalha").val() === '') {
                     alert("Preencha todos os campos.");
                     $("#pedCorToalha").prop("focus", true);
@@ -86,10 +103,6 @@ function verificaCadPedido() {
                     indexPedido++;
                     dividePedido(indexPedido);
                 }
-            }
-            else{
-                indexPedido++;
-                dividePedido(indexPedido);
             }
         break;
 

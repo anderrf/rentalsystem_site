@@ -15,10 +15,25 @@
 
     //Produtos
     $jogos = $_POST['jogos'];
-    $mesas = $_POST['mesas'];
-    $cadeiras = $_POST['cadeiras'];
+    if(($_POST['mesas'] != NULL) && ($_POST['mesas'] != '')){
+      $mesas = $_POST['mesas'];
+    }
+    else{
+      $mesas = 0;
+    }
+    if(($_POST['cadeiras'] != NULL) && ($_POST['cadeiras'] != '')){
+      $cadeiras = $_POST['cadeiras'];
+    }
+    else{
+      $cadeiras = 0;
+    }
     $corToalha = $_POST['corToalha'];
-    $qtToalha = $_POST['qtToalha'];
+    if(($_POST['qtToalha'] != NULL) && ($_POST['qtToalha'] != '')){
+      $qtToalha = $_POST['qtToalha'];
+    }
+    else{
+      $qtToalha = 0;
+    }
     $numMesas = ($jogos + $mesas);
     $numCadeiras = (($jogos * 4) + $cadeiras);
 

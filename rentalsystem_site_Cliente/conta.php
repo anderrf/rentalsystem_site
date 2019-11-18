@@ -79,7 +79,24 @@
                     <h2>Recentes:</h2>
                     <hr>
                     <div class="row">
-
+                        <div class="col-md-6">
+                            
+                        </div>
+                        <div class="col-md-6" style="text-align: rigth">
+                            <span class="glyphicon glyphicon-stop" style="color: #eee"></span>
+                            Novo
+                            <span class="glyphicon glyphicon-stop" style="color: #ffff5e"></span>
+                            Agendado
+                            <span class="glyphicon glyphicon-stop" style="color: #99ff66"></span>
+                            Realizado
+                            <span class="glyphicon glyphicon-stop" style="color: #F08080"></span>
+                            Recusado
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table id="tabelaPedidos" style="width: 100%"></table>
+                        </div>
                     </div>
                 </div>
 
@@ -179,6 +196,103 @@
             </div>
         </div>
 
+        <!-- Modal de consultar pedido -->
+        <div id="modalPedido" class="modal fade" role="dialog" value="">
+            <div class="modal-dialog">
+        <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h3 class="modal-title" id="hPedido">Pedido:</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div id="moInner">
+                            
+                            <div class='row'>
+                                <div class='col-md-9'>
+                                    <label for=''>Endereço:</label>
+                                    <input class='form-control' type='text' id='endereco' readonly>
+                                </div>
+                                <div class='col-md-3'>
+                                    <label for=''>Número:</label>
+                                    <input class='form-control' type='number' id='numero' readonly>
+                                </div>
+                            </div>
+                            
+                            <div class='row'>
+                                <div class='col-md-5'>
+                                    <label for=''>Bairro:</label>
+                                    <input class='form-control' type='text' id='bairro' readonly>
+                                </div>
+                                <div class='col-md-5'>
+                                    <label for=''>Cidade:</label>
+                                    <input class='form-control' type='text' id='cidade' readonly>
+                                </div>
+                                <div class='col-md-2'>
+                                    <label for=''>UF:</label>
+                                    <input class='form-control' type='text' id='UF' readonly>
+                                </div>
+                            </div>
+                            
+                            <div class='row'>
+                                <div class='col-md-12'>
+                                    <label for=''>Referência:</label>
+                                    <input class='form-control' type='text' id='referencia' readonly>
+                                </div>
+                            </div>
+                            
+                            <div class='row'>
+                                <div class='col-md-12'>
+                                    <h3>Entrega:</h3>
+                                    <div class='row'>
+                                        <div class='col-md-6'>
+                                            <label for=''>Data:</label>
+                                            <input class='form-control' type='date' id='dataEntrega' readonly>
+                                        </div>
+                                        <div class='col-md-6'>
+                                            <label for=''>Horário:</label>
+                                            <input class='form-control' type='time' id='horaEntrega' readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class='row'>
+                                <div class='col-md-12'>
+                                    <h3>Retirada:</h3>
+                                    <div class='row'>
+                                        <div class='col-md-6'>
+                                            <label for=''>Data:</label>
+                                            <input class='form-control' type='date' id='dataRetirada' readonly>
+                                        </div>
+                                        <div class='col-md-6'>
+                                            <label for=''>Horário:</label>
+                                            <input class='form-control' type='time' id='horaRetirada' readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class='row'>
+                                <div class='col-md-6'>
+                                    <label for=''>Feito em:</label>
+                                    <input class='form-control' type='date' id='dataPedido' readonly>
+                                </div>
+                                <div class='col-md-6'>
+                                    <label for=''>Valor:</label>
+                                    <input class='form-control' type='text' id='valor' readonly>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer" id="moFooter">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 
@@ -193,16 +307,15 @@
     opt = "Pedidos";
 
     $(document).ready(function(){
-
         carregaPagConta();
         mostraOP();
-
     });
 
     function mostraOP(){
             if(opt == "Pedidos"){
                 $("#divPedidos").prop("hidden", false);
                 $("#divDados").prop("hidden", true);
+                listarPedidosConta();
             }
             else if(opt == "Dados"){
                 $("#divPedidos").prop("hidden", true);
@@ -221,6 +334,116 @@
         opt = "Dados";
         mostraOP();
     });
+
+    function listarPedidosConta(){
+        var codigo = $("#suaConta").data('id');
+        $.ajax({
+            type: "post",
+            url: "../../../php/pedido/listarPedidoConta.php",
+            data: "codigo="+codigo,
+            dataType: "json",
+            success: function(data){
+                var regPedido = "<tr><th>Endereço:</th><th>Feito em:</th><th>Entrega:</th><th>Valor:</th></tr>";
+                $.each(data.pedido, function (i, dados) {
+                    if(dados.status == 1){
+                        regPedido += "<tr class='itemPedido' data-id='"+dados.codigo+"' value='"+dados.status+"' style='background-color: #eee' data-toggle='modal' data-target='#modalPedido'><td class='endPedido'>"+dados.endereco+", "+dados.numero+", "+dados.bairro+", "+dados.cidade+", "+dados.UF+"</td><td class='dtPedido'>"+dados.dataPedido+"</td><td class='dtEntrega'>"+dados.dataEntrega+"</td><td class='vlPedido'>R$ "+dados.valor+"</td></tr>";
+                    }
+                    else if(dados.status == 2){
+                        regPedido += "<tr class='itemPedido' data-id='"+dados.codigo+"' value='"+dados.status+"' style='background-color: #ffff5e' data-toggle='modal' data-target='#modalPedido'><td class='endPedido'>"+dados.endereco+", "+dados.numero+", "+dados.bairro+", "+dados.cidade+", "+dados.UF+"</td><td class='dtPedido'>"+dados.dataPedido+"</td><td class='dtEntrega'>"+dados.dataEntrega+"</td><td class='vlPedido'>R$ "+dados.valor+"</td></tr>";
+                    }
+                    else if(dados.status == 3){
+                        regPedido += "<tr class='itemPedido' data-id='"+dados.codigo+"' value='"+dados.status+"' style='background-color: #99ff66' data-toggle='modal' data-target='#modalPedido'><td class='endPedido'>"+dados.endereco+", "+dados.numero+", "+dados.bairro+", "+dados.cidade+", "+dados.UF+"</td><td class='dtPedido'>"+dados.dataPedido+"</td><td class='dtEntrega'>"+dados.dataEntrega+"</td><td class='vlPedido'>R$ "+dados.valor+"</td></tr>";
+                    }
+                    else if(dados.status == 4){
+                        regPedido += "<tr class='itemPedido' data-id='"+dados.codigo+"' value='"+dados.status+"' style='background-color: #F08080' data-toggle='modal' data-target='#modalPedido'><td class='endPedido'>"+dados.endereco+", "+dados.numero+", "+dados.bairro+", "+dados.cidade+", "+dados.UF+"</td><td class='dtPedido'>"+dados.dataPedido+"</td><td class='dtEntrega'>"+dados.dataEntrega+"</td><td class='vlPedido'>R$ "+dados.valor+"</td></tr>";
+                    }
+                    
+                });
+                $("#tabelaPedidos").html(regPedido);
+            },
+            error: function(data){
+                alert(data);
+            }
+        });
+    }
+
+$(document).on("click", ".itemPedido", function(){
+    var codigo = $(this).data('id');
+        $.ajax({
+        type: "post",
+        url: "../../../php/pedido/mostrarPedidoCompleto.php",
+        data: "codigo="+codigo,
+        dataType: "json",
+        success: function(data){
+            $("#endereco").val(data.pedido.endereco);
+            $("#numero").val(data.pedido.numero);
+            $("#bairro").val(data.pedido.bairro);
+            $("#cidade").val(data.pedido.cidade);
+            $("#UF").val(data.pedido.UF);
+            $("#referencia").val(data.pedido.referencia);
+            //Entrega
+            var dataEntrega = (data.pedido.dataEntrega).toString();
+            var dateEntrega = new Date(dataEntrega);
+            if(dateEntrega.getDate() < 10){
+                var datEntrega = dateEntrega.getFullYear() + "-" + (dateEntrega.getMonth() + 1) + "-0" + dateEntrega.getDate();
+            }
+            else{
+                var datEntrega = dateEntrega.getFullYear() + "-" + (dateEntrega.getMonth() + 1) + "-" + dateEntrega.getDate();
+            }
+            $("#dataEntrega").val(datEntrega);
+            if(dateEntrega.getHours() < 10){
+                if(dateEntrega.getMinutes() < 10){
+                    var horaEntrega = "0"+dateEntrega.getHours() + ":0" + dateEntrega.getMinutes();
+                }
+                else{
+                    var horaEntrega = "0"+dateEntrega.getHours() + ":" + dateEntrega.getMinutes();
+                }
+            }
+            else{
+                if(dateEntrega.getMinutes() < 10){
+                    var horaEntrega = dateEntrega.getHours() + ":0" + dateEntrega.getMinutes();
+                }
+                else{
+                    var horaEntrega = dateEntrega.getHours() + ":" + dateEntrega.getMinutes();
+                }
+            }
+            $("#horaEntrega").val(horaEntrega);
+            //Retirada
+            var dataRetirada = (data.pedido.dataRetirada).toString();
+            var dateRetirada = new Date(dataRetirada);
+            if(dateRetirada.getDate() < 10){
+                var datRetirada = dateRetirada.getFullYear() + "-" + (dateRetirada.getMonth() + 1) + "-0" + dateRetirada.getDate();
+            }
+            else{
+                var datRetirada = dateRetirada.getFullYear() + "-" + (dateRetirada.getMonth() + 1) + "-" + dateRetirada.getDate();
+            }
+            $("#dataRetirada").val(datRetirada);
+            if(dateRetirada.getHours() < 10){
+                if(dateRetirada.getMinutes() < 10){
+                    var horaRetirada = "0"+dateRetirada.getHours() + ":0" + dateRetirada.getMinutes();
+                }
+                else{
+                    var horaRetirada = "0"+dateRetirada.getHours() + ":" + dateRetirada.getMinutes();
+                }
+            }
+            else{
+                if(dateRetirada.getMinutes() < 10){
+                    var horaRetirada = dateRetirada.getHours() + ":0" + dateRetirada.getMinutes();
+                }
+                else{
+                    var horaRetirada = dateRetirada.getHours() + ":" + dateRetirada.getMinutes();
+                }
+            }
+            $("#horaRetirada").val(horaRetirada);
+            //pedido e valor
+            $("#dataPedido").val(data.pedido.dataPedido);
+            $("#valor").val(data.pedido.valor);
+        },
+        error: function(data){
+            alert(data);
+        }
+    });
+});
 
         function desabilita(){
         $("#moEndereco").prop("readonly", true);

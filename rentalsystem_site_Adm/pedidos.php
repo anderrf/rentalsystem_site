@@ -83,6 +83,22 @@
         <hr>
 
         <div class="row">
+            <div class="col-md-6">
+                            
+            </div>
+            <div class="col-md-6" style="text-align: rigth">
+                <span class="glyphicon glyphicon-stop" style="color: #eee"></span>
+                Novo
+                <span class="glyphicon glyphicon-stop" style="color: #ffff5e"></span>
+                Agendado
+                <span class="glyphicon glyphicon-stop" style="color: #99ff66"></span>
+                Realizado
+                <span class="glyphicon glyphicon-stop" style="color: #F08080"></span>
+                Recusado
+            </div>
+        </div>
+
+        <div class="row">
             <div class="col-md-12">
                 <table id="tbPedidos">
                 </table>
