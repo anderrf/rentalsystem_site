@@ -2,8 +2,7 @@
 
 try{
 
-    $conecta = mysqli_connect("localhost", "id10822138_rentalsystem", "programmastery", "id10822138_rentalsystem");
-                              //servidor, usuário banco, senha, nome do banco
+    include('../conexao.php');
 
     $nome = $_POST['nome'];
     $senha = crypt('$2$55vdv51ds', $_POST['senha']);

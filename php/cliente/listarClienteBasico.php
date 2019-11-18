@@ -1,7 +1,6 @@
 <?php
   try{
-    $conecta = mysqli_connect("localhost", "id10822138_rentalsystem", "programmastery", "id10822138_rentalsystem");
-                              //servidor, usuário banco, senha, nome do banco
+    include('../conexao.php');
     $query = "SELECT cd_cliente, nm_cliente, nr_telefone, CONCAT(nm_endereco, ', ', nr_numeroEndereco, ', ', nm_bairro, ', ', nm_cidade, ', ', nm_UF) AS ds_endereco, ds_email FROM tb_Cliente WHERE ds_status = true AND id_nivel = 2;";
     $resultado = mysqli_query($conecta, $query);
     $registro = array(

@@ -1,7 +1,6 @@
 <?php
   try{
-    $conecta = mysqli_connect("localhost", "id10822138_rentalsystem", "programmastery", "id10822138_rentalsystem");
-                              //servidor, usuário banco, senha, nome do banco
+    include('../conexao.php');
 
     $query = "SELECT pe.cd_pedido, pe.nm_endereco, pe.nr_numeroEndereco, pe.nm_bairro, pe.nm_cidade, pe.nm_UF, 
       pe.ds_referencia, pe.dt_pedido, pe.dt_entrega, pe.dt_retirada, pe.vl_pedido, cl.nm_cliente, 

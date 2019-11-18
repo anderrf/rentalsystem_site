@@ -1,7 +1,6 @@
 <?php
   try{
-    $conecta = mysqli_connect("localhost", "id10822138_rentalsystem", "programmastery", "id10822138_rentalsystem");
-                              //servidor, usuário banco, senha, nome do banco
+    include('../conexao.php');
 
     $query = "SELECT * FROM tb_Produto ORDER BY cd_produto ASC";
     $resultado = mysqli_query($conecta, $query);

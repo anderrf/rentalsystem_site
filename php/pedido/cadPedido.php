@@ -1,8 +1,7 @@
 <?php
 
   try{
-    $conecta = mysqli_connect("localhost", "id10822138_rentalsystem", "programmastery", "id10822138_rentalsystem");
-                              //servidor, usuário banco, senha, nome do banco
+    include('../conexao.php');
 
     $codCliente = $_POST['codCliente'];
     $endereco = $_POST['endereco'];
