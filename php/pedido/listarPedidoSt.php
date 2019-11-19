@@ -4,8 +4,10 @@
 
     $status = $_POST['status'];
 
-    $query = "SELECT *, (SELECT nm_cliente FROM tb_Cliente cl INNER JOIN tb_Pedido pe ON pe.id_cliente = cl.cd_cliente) AS nm_cliente
-    FROM tb_Pedido WHERE id_statusPedido = '$status';";
+    $query = "SELECT pe.cd_pedido, pe.nm_endereco, pe.nr_numeroEndereco, pe.nm_bairro, pe.nm_cidade, pe.nm_UF, 
+      pe.ds_referencia, pe.dt_pedido, pe.dt_entrega, pe.dt_retirada, pe.vl_pedido, cl.nm_cliente, 
+      pe.id_statusPedido FROM tb_Pedido pe INNER JOIN tb_Cliente cl ON pe.id_cliente = cl.cd_cliente 
+      WHERE pe.id_statusPedido = '$status';";
     
     $resultado = mysqli_query($conecta, $query);
     $registro = array(
@@ -21,9 +23,9 @@
         'cidade' => $linha['nm_cidade'],
         'UF' => $linha['nm_UF'],
         'referencia' => $linha['ds_referencia'],
-        'dataPedido' => strval($linha['dt_pedido']),
-        'dataEntrega' => strval($linha['dt_entrega']),
-        'dataRetirada' => strval($linha['dt_retirada']),
+        'dataPedido' => $linha['dt_pedido'],
+        'dataEntrega' => $linha['dt_entrega'],
+        'dataRetirada' => $linha['dt_retirada'],
         'valor' => $linha['vl_pedido'],
         'cliente' => $linha['nm_cliente'],
         'status' => $linha['id_statusPedido']
