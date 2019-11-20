@@ -198,7 +198,7 @@
             <input type="date" placeholder="Entrega" name="" value="" id="pedDataEntrega">
           </div>
           <div class="col-md-6">
-            <label for="">Horário</label>
+            <label for="">Horário:</label>
             <input type="time" placeholder="Horário" name="" value="" id="pedHoraEntrega">
           </div>
         </div>
@@ -212,7 +212,7 @@
             <input type="date" placeholder="Retirada" name="" value="" id="pedDataRetirada">
           </div>
           <div class="col-md-6">
-            <label for="">Horário</label>
+            <label for="">Horário:</label>
             <input type="time" placeholder="Horário" name="" value="" id="pedHoraRetirada">
           </div>
         </div>

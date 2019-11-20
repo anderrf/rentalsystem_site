@@ -35,7 +35,7 @@ $(document).on("click", "#btnPesqPedido", function(){
     else{
         $.ajax({
             type: "post",
-            url: "https://rentalsystempm.000webhostapp.com/php/cliente/pesquisarClienteBasico.php",
+            url: "https://rentalsystempm.000webhostapp.com/php/pedido/pesquisarPedidoAdm.php",
             data: "pesquisa="+pesquisa,
             dataType: "json",
             success: function(data){
@@ -178,4 +178,57 @@ $(document).on("click", "#btnAceitarPedido", function(){
             alert(data);
         }
     })
+});
+
+$(document).on("click", "#btnConcluirPedido", function(){
+    var codigo = $("#hPedido").attr("value");
+    $.ajax({
+        type: "post",
+        url: "../../../php/pedido/concluirPedido.php",
+        data: "codigo="+codigo,
+        success: function(data){
+            alert(data);
+            location.reload();
+        },
+        error: function(data){
+            alert(data);
+        }
+    })
+});
+
+$(document).on("click", "#btnRecusarPedido", function(){
+    document.getElementById('hPedido').textContent = "Informe o motivo da recusa:";
+    var contRecusa = "";
+    contRecusa += "<div class='row'><div class='col-md-12'><select class='form-control' name='motivoRecusa' id='motivoRecusa'><option value=''></option><option value='Indisponibilidade de tempo'>Indisponibilidade de tempo</option><option value='Indisponibilidade de estoque'>Indisponibilidade de estoque</option></select></div></div>";
+    $("#moInner").html(contRecusa);
+    var ftRecusa = "";
+    ftRecusa += "<button type='button' class='btn btn-danger' id='btnConfirmarRecusar'>Recusar</button>";
+    $("#moFooter").html(ftRecusa);
+});
+
+$(document).on("click", "#btnConfirmarRecusar", function(){
+    var codigo = $("#hPedido").attr("value");
+    var motivoRecusa = document.getElementById('motivoRecusa').value;
+    if((motivoRecusa != '') && (motivoRecusa != null) && (motivoRecusa != ' ')){
+        var form_data = new FormData();
+        form_data.append("codigo", codigo);
+        form_data.append("motivoRecusa", motivoRecusa);
+        $.ajax({
+            type: "post",
+            url: "../../../php/pedido/recusarPedido.php",
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function(data){
+                location.reload();
+            },
+            error: function(data){
+                alert(data);
+            }
+        });
+    }
+    else{
+        alert("Informe o motivo da recusa.");
+    }
 });

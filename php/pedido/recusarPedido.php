@@ -3,10 +3,15 @@
     include('../conexao.php');
     
     $codigo = $_POST['codigo'];
+    $motivoRecusa = $_POST['motivoRecusa'];
 
-    $query = "UPDATE tb_Pedido SET id_statusPedido = 4 WHERE cd_pedido = $codigo;";
+    $query1 = "UPDATE tb_Pedido SET id_statusPedido = 4 WHERE cd_pedido = $codigo;";
     
-    mysqli_query($conecta, $query);
+    mysqli_query($conecta, $query1);
+    
+    $query2 = "INSERT INTO tb_MotivoRecusa VALUES (NULL, '$motivoRecusa', '$codigo')";
+    
+    mysqli_query($conecta, $query2);
     
     echo "Pedido recusado.";
 

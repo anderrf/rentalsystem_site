@@ -86,7 +86,7 @@ function verificaCadPedido() {
                 break;
 
         case 5:
-            if(document.getElementById('negarToalhas').checked == true){
+            if(document.getElementById('negarToalhas').checked === true){
                 indexPedido++;
                 dividePedido(indexPedido);
             }
@@ -113,7 +113,7 @@ function dividePedido() {
     switch (indexPedido) {
 
         case 1:
-            $("#hCodigo").val("Informe seu endereço:");
+            document.getElementById('hCodigo').textContent = "Informe seu endereço:";
             $("#ped1").prop("hidden", false);
             $("#ped2").prop("hidden", true);
             $("#ped2_1").prop("hidden", true);
@@ -125,6 +125,7 @@ function dividePedido() {
             break;
 
         case 2:
+            document.getElementById('hCodigo').textContent = "Informe quantos jogos deseja:";
             $("#ped1").prop("hidden", true);
             $("#ped2").prop("hidden", false);
             $("#ped2_1").prop("hidden", true);
@@ -136,6 +137,7 @@ function dividePedido() {
             break;
 
         case 3:
+            document.getElementById('hCodigo').textContent = "Deseja mesas e/ou cadeiras adicionais?";
             $("#ped1").prop("hidden", true);
             $("#ped2").prop("hidden", true);
             $("#ped2_1").prop("hidden", false);
@@ -147,6 +149,7 @@ function dividePedido() {
             break;
 
         case 4:
+            document.getElementById('hCodigo').textContent = "Informe a quantidade de mesas e/ou cadeiras adicionais:";
             $("#ped1").prop("hidden", true);
             $("#ped2").prop("hidden", true);
             $("#ped2_1").prop("hidden", true);
@@ -158,6 +161,7 @@ function dividePedido() {
         break;
 
         case 5:
+            document.getElementById('hCodigo').textContent = "Informe a cor e a quantidade das toalhas:";
             $("#ped1").prop("hidden", true);
             $("#ped2").prop("hidden", true);
             $("#ped2_1").prop("hidden", true);
@@ -169,6 +173,7 @@ function dividePedido() {
         break;
 
         case 6:
+            document.getElementById('hCodigo').textContent = "Informe as datas e horários de entrega e retirada de seu pedido:";
             $("#ped1").prop("hidden", true);
             $("#ped2").prop("hidden", true);
             $("#ped2_1").prop("hidden", true);
@@ -202,6 +207,8 @@ function listaCorToalha(){
 }
 
 $(document).on("click", "#btnEnviarPedido", function(){
+    /*var data = new Date();
+    var dataAtual = new Date(data.getFullYear()+"-"+(data.getMonth()+1)+"-"+data.getDate()+" "+data.getHours()+":"+data.getMinutes());*/
     if($("#pedDataEntrega").val() === ''){
         alert("Preencha todos os campos.");
         $("#pedDataEntrega").prop("focus", true);
@@ -219,7 +226,32 @@ $(document).on("click", "#btnEnviarPedido", function(){
         $("#pedHoraRetirada").prop("focus", true);
     }
     else{
-        enviarPedido();
+        //data de entrega
+        var dataEntrega = $("#pedDataEntrega").val();
+        var horaEntrega = $("#pedHoraEntrega").val();
+        var dt_entrega = new Date(dataEntrega+" "+horaEntrega);
+        //data atual
+        var dataAtual = new Date();
+        var dataMinima = new Date(dataAtual.getFullYear()+"-"+(dataAtual.getMonth()+1)+"-"+(dataAtual.getDate()+2));
+        if(dt_entrega < dataMinima){
+            alert("A data para este pedido não pode ser anterior a: "+dataMinima.getDate()+"/"+(dataMinima.getMonth()+1)+"/"+dataMinima.getFullYear()+". A antecedência mínima é de 24 horas.");
+        }
+        else{
+            //data de retirada
+            var dataRetirada = $("#pedDataRetirada").val();
+            var horaRetirada = $("#pedHoraRetirada").val();
+            var dt_retirada = new Date(dataRetirada+" "+horaRetirada);
+            //comparação
+            var diferencaData = ((dt_retirada - dt_entrega) / 1000);
+            diferencaData /= (60 * 60);
+            diferencaData = Math.abs(Math.round(diferencaData));
+            if(diferencaData < 4){
+                alert("A diferença mínima de horário deve ser de 04 horas");
+            }
+            else{
+                enviarPedido();
+            }
+        }
     }
 });
 

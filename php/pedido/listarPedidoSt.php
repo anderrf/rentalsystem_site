@@ -7,7 +7,7 @@
     $query = "SELECT pe.cd_pedido, pe.nm_endereco, pe.nr_numeroEndereco, pe.nm_bairro, pe.nm_cidade, pe.nm_UF, 
       pe.ds_referencia, pe.dt_pedido, pe.dt_entrega, pe.dt_retirada, pe.vl_pedido, cl.nm_cliente, 
       pe.id_statusPedido FROM tb_Pedido pe INNER JOIN tb_Cliente cl ON pe.id_cliente = cl.cd_cliente 
-      WHERE pe.id_statusPedido = '$status';";
+      WHERE pe.id_statusPedido = '$status' ORDER BY pe.dt_pedido;";
     
     $resultado = mysqli_query($conecta, $query);
     $registro = array(
