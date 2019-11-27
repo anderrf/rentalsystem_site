@@ -10,22 +10,30 @@ try{
     $query = "SELECT * FROM tb_Cliente WHERE nm_cliente = '$nome' AND ds_status = true";
 
     $resultado = mysqli_query($conecta, $query);
-
-    while($linha = mysqli_fetch_assoc($resultado)){
-        $registro = array(
-            'cliente' => array(
-                'nome' => $nome,
-                'senha' => $senha,
-                'nomeVerificar' => $linha['nm_cliente'],
-                'senhaVerificar' => $linha['ds_senha'],
-                'nivel' => $linha['id_nivel']
-            )
-        );
-    }
     
-    echo json_encode($registro);
-
-
+    if(isset($resultado) == true){
+        while($linha = mysqli_fetch_assoc($resultado)){
+            $registro = array(
+                'cliente' => array(
+                    'nome' => $nome,
+                    'senha' => $senha,
+                    'nomeVerificar' => $linha['nm_cliente'],
+                    'senhaVerificar' => $linha['ds_senha'],
+                    'nivel' => $linha['id_nivel']
+                )
+            );
+        }
+        
+        if(isset($registro) == true){
+            echo json_encode($registro);
+        }
+        else{
+            echo "Acesso negado";
+        }
+    }
+    else{
+        echo "Acesso negado";
+    }
 
   } catch (Exception $e) {
     echo "Erro ao entrar: ".$e;

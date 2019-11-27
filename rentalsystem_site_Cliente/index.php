@@ -42,8 +42,8 @@
                     <li><a href="cadastro.php">Cadastrar</a></li>';
                 }
                 else{
-                    echo '<li><a href="conta.php"><i class="fa fa-bell"> Conta</i></a></li>
-                    <li><a href="https://rentalsystempm.000webhostapp.com/php/conta/logout.php" id="btnDeslogar"><i class="fa fa-power-off">  Sair</i></a></li>';
+                    echo '<li><a href="conta.php"><i class="fa fa-user">  Conta</i></a></li>
+                    <li><a href="../../php/conta/logout.php" id="btnDeslogar"><i class="fa fa-power-off">  Sair</i></a></li>';
                 }
             ?>
             </ul>
@@ -158,7 +158,7 @@
                                 </div>
                                 <div class="row ritemfoot">
                                     <div class="col-md-12">
-                                        <label for=""><a href="https://rentalsystempm.000webhostapp.com/php/conta/logout.php">Sair</a></label>
+                                        <label for=""><a href="../../php/conta/logout.php">Sair</a></label>
                                     </div>
                                 </div>
                             ';

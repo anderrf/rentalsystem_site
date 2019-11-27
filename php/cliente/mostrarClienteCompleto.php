@@ -24,7 +24,8 @@
                 'email' => $linha['ds_email'],
                 'CPF' => $linha['nr_CPF'],
                 'RG' => $linha['nr_RG'],
-                'foto' => $linha['uri_imagem']
+                'foto' => $linha['uri_imagem'],
+                'dataCadastro' => $linha['dt_cadastro']
             )
         );
     }

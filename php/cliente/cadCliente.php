@@ -1,6 +1,7 @@
 <?php
   try{
     include('../conexao.php');
+    date_default_timezone_set("America/Sao_Paulo");
 
     $nome = $_POST['nome'];
     $senha = crypt('$2$55vdv51ds', $_POST['senha']);
@@ -16,7 +17,7 @@
     $CPF = $_POST['CPF'];
     $RG = $_POST['RG'];
 
-    $query = "INSERT INTO tb_Cliente values (null, '$nome', '$senha', '$endereco', '$numero', '$bairro', '$cidade', '$UF', '$referencia', '$telefone', '$celular', '$email', '$CPF', '$RG', null, true, 2);";
+    $query = "INSERT INTO tb_Cliente values (NULL, '$nome', '$senha', '$endereco', '$numero', '$bairro', '$cidade', '$UF', '$referencia', '$telefone', '$celular', '$email', '$CPF', '$RG', null, true, 2, CURDATE());";
 
     mysqli_query($conecta, $query);
     echo "Cadastro realizado com sucesso";

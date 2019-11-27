@@ -44,8 +44,8 @@
             <li><a href="cadastro.php">Cadastrar</a></li>';
           }
           else{
-            echo '<li><a href="conta.php"><i class="fa fa-bell"> Conta</i></a></li>
-            <li><a href="https://rentalsystempm.000webhostapp.com/php/conta/logout.php" id="btnDeslogar"><i class="fa fa-power-off">  Sair</i></a></li>';
+            echo '<li><a href="conta.php"><i class="fa fa-user">  Conta</i></a></li>
+            <li><a href="../../php/conta/logout.php" id="btnDeslogar"><i class="fa fa-power-off">  Sair</i></a></li>';
           }
         ?>
       </ul>
@@ -58,7 +58,7 @@
     <h2>Entre em contato</h2>
     <div class="textbox">
       <i class="fa fa-envelope-square"></i>
-      <input type="text" placeholder="Email" name="" value="">
+      <input type="text" placeholder="Email" name="" value="" id="emailContato">
 
     </div>
     <div class="textbox">
@@ -71,10 +71,10 @@
 
     <div class="row">
       <form>
-        <input class="btnContato" type="button" name="" value="Enviar Mensagem">
+        <input class="btnContato" type="button" name="" value="Enviar Mensagem" id="btnEnviarMensagem">
       </form>
       <form>
-        <input class="btnContato" type="button" name="" value="Cancelar">
+        <input class="btnContato" type="button" name="" value="Cancelar" id="btnCancelarMensagem">
       </form>
 
     </div>
@@ -92,5 +92,37 @@
 </body>
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script>
+    
+    $(document).on("click", "#btnCancelarMensagem", function(){
+        location.reload(); 
+    });
+    
+    $(document).on("click", "#btnEnviarMensagem", function(){
+        if(($("#emailContato").val() == '') || ($("#comments").val() == '')){
+            alert("Preencha ambos os campos.");
+        }
+        else{
+            var form_data = new FormData();
+            form_data.append("email", $("#emailContato").val());
+            form_data.append("mensagem", $("#comments").val());
+            $.ajax({
+                type: "post",
+                url: "../../php/conta/enviarEmail.php",
+                data: form_data,
+                contentType: false,
+                cache: false,
+                processData: false,
+                success: function(data){
+                    alert(data);
+                },
+                error: function(data){
+                    alert(data);
+                }
+            });
+        }
+    });
+    
+</script>
 
 </html>

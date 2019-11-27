@@ -6,7 +6,7 @@
     $codigo = $_SESSION['codigo'];
 
     if($varLogin != true){
-        header('Location: https://rentalsystempm.000webhostapp.com/rentalsystem_site_cliente/cadastro.php');
+        header('Location: ../../rentalsystem_site_cliente/cadastro.php');
         echo "Cadastre-se e entre para acessar a página de conta.";
     }
     else{
@@ -23,6 +23,11 @@
     <link rel="stylesheet" href="css/styleVenda.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        .row{
+            margin-top: 5px;
+        }
+    </style>
     <title>RentalSystem - Conta</title>
 </head>
 
@@ -50,8 +55,7 @@
             <li><a href="contato.php">Contato</a></li>
           </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a id="notification"><i class="fa fa-bell"></i></a></li>
-                <li><a href="https://rentalsystempm.000webhostapp.com/php/conta/logout.php" id="btnDeslogar"><i class="fa fa-power-off">  Sair</i></a></li>
+                <li><a href="../../php/conta/logout.php" id="btnDeslogar"><i class="fa fa-power-off">  Sair</i></a></li>
             </ul>
         </div>
     </nav>
@@ -106,9 +110,13 @@
                     <hr>
 
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-9">
                             <label for="">Nome:</label>
                             <input class="form-control" type="text" id="moNome" readonly>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="">Cadastrado em:</label>
+                            <input class="form-control" type="text" id="moDataCadastro" readonly>
                         </div>
                     </div>
 
@@ -134,7 +142,35 @@
                         </div>
                         <div class="col-md-2">
                             <label for="">UF:</label>
-                            <input class="form-control" type="text" id="moUF" readonly>
+                            <select class="form-control" type="text" id="moUF" readonly disabled>
+                                <option value="AC">AC</option>
+                                <option value="AL">AL</option>
+                                <option value="AP">AP</option>
+                                <option value="AM">AM</option>
+                                <option value="BA">BA</option>
+                                <option value="CE">CE</option>
+                                <option value="DF">DF</option>
+                                <option value="ES">ES</option>
+                                <option value="GO">GO</option>
+                                <option value="MA">MA</option>
+                                <option value="MT">MT</option>
+                                <option value="MS">MS</option>
+                                <option value="MG">MG</option>
+                                <option value="PA">PA</option>
+                                <option value="PB">PB</option>
+                                <option value="PR">PR</option>
+                                <option value="PE">PE</option>
+                                <option value="PI">PI</option>
+                                <option value="RJ">RJ</option>
+                                <option value="RN">RN</option>
+                                <option value="RS">RS</option>
+                                <option value="RO">RO</option>
+                                <option value="RR">RR</option>
+                                <option value="SC">SC</option>
+                                <option value="SP">SP</option>
+                                <option value="SE">SE</option>
+                                <option value="TO">TO</option>
+                            </select>
                         </div>
                     </div>
 
@@ -211,7 +247,7 @@
                             <div class='row'>
                                 <div class='col-md-9'>
                                     <label for=''>Endereço:</label>
-                                    <input class='form-control' type='text' id='endereco' readonly>
+                                    <input class='form-control endereco' type='text' id='endereco' readonly>
                                 </div>
                                 <div class='col-md-3'>
                                     <label for=''>Número:</label>
@@ -268,6 +304,41 @@
                                         <div class='col-md-6'>
                                             <label for=''>Horário:</label>
                                             <input class='form-control' type='time' id='horaRetirada' readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class='row'>
+                                <div class='col-md-12'>
+                                    <h3>Produtos:</h3>
+                                    <div class='row'>
+                                        <div class='col-md-4'>
+                                            <label>Mesas:</label>
+                                        </div>
+                                        <div class='col-md-4'></div>
+                                        <div class='col-md-4'>
+                                            <input class='form-control' type='number' id='mesas' readonly>
+                                        </div>
+                                    </div>
+                                    <div class='row'>
+                                        <div class='col-md-4'>
+                                            <label>Cadeiras:</label>
+                                        </div>
+                                        <div class='col-md-4'></div>
+                                        <div class='col-md-4'>
+                                            <input class='form-control' type='number' id='cadeiras' readonly>
+                                        </div>
+                                    </div>
+                                    <div class='row'>
+                                        <div class='col-md-4'>
+                                            <label>Toalhas:</label>
+                                        </div>
+                                        <div class='col-md-4'>
+                                            <input class='form-control' type='text' id='corToalha' readonly>
+                                        </div>
+                                        <div class='col-md-4'>
+                                            <input class='form-control' type='number' id='toalhas' readonly>
                                         </div>
                                     </div>
                                 </div>
@@ -369,13 +440,14 @@
 
 $(document).on("click", ".itemPedido", function(){
     var codigo = $(this).data('id');
+    var status = $(this).attr('value');
         $.ajax({
         type: "post",
         url: "../../../php/pedido/mostrarPedidoCompleto.php",
         data: "codigo="+codigo,
         dataType: "json",
         success: function(data){
-            $("#endereco").val(data.pedido.endereco);
+            $(".endereco").val(data.pedido.endereco);
             $("#numero").val(data.pedido.numero);
             $("#bairro").val(data.pedido.bairro);
             $("#cidade").val(data.pedido.cidade);
@@ -435,9 +507,35 @@ $(document).on("click", ".itemPedido", function(){
                 }
             }
             $("#horaRetirada").val(horaRetirada);
+            //Produtos
+            $("#mesas").val(data.pedido.qt_mesas);
+            $("#cadeiras").val(data.pedido.qt_cadeiras);
+            if(((data.pedido.corToalha) != null) && ((data.pedido.corToalha) != '')){
+                $("#corToalha").val(data.pedido.corToalha);
+            }
+            else{
+                $("#corToalha").val("Nenhuma");
+            }
+            if(((data.pedido.qt_toalhas) != null) && ((data.pedido.qt_toalhas) != '')){
+                $("#toalhas").val(data.pedido.qt_toalhas);
+            }
+            else{
+                $("#toalhas").val(0);
+            }
             //pedido e valor
             $("#dataPedido").val(data.pedido.dataPedido);
             $("#valor").val(data.pedido.valor);
+            if(status == 4){
+                var ftMR = "<div class='row' style='text-align: left'><div class='col-md-6'><label>Motivo da recusa: </label></div><div class='col-md-6'><label id='lblMotivoRecusa'></label></div></div>";
+                $("#moFooter").html(ftMR);
+                if(((data.pedido.motivoRecusa) != null) && ((data.pedido.motivoRecusa) != '')){
+                    document.getElementById('lblMotivoRecusa').textContent = (data.pedido.motivoRecusa);
+                }
+            }
+            else{
+                var ftMR = "";
+                $("#moFooter").html(ftMR);
+            }
         },
         error: function(data){
             alert(data);
@@ -450,7 +548,7 @@ $(document).on("click", ".itemPedido", function(){
         $("#moNumero").prop("readonly", true);
         $("#moBairro").prop("readonly", true);
         $("#moCidade").prop("readonly", true);
-        $("#moUF").prop("readonly", true);
+        $("#moUF").prop("disabled", true);
         $("#moReferencia").prop("readonly", true);
         $("#moTelefone").prop("readonly", true);
         $("#moCelular").prop("readonly", true);
@@ -465,7 +563,7 @@ $(document).on("click", ".itemPedido", function(){
         $("#moNumero").prop("readonly", false);
         $("#moBairro").prop("readonly", false);
         $("#moCidade").prop("readonly", false);
-        $("#moUF").prop("readonly", false);
+        $("#moUF").prop("disabled", false);
         $("#moReferencia").prop("readonly", false);
         $("#moTelefone").prop("readonly", false);
         $("#moCelular").prop("readonly", false);
@@ -487,6 +585,7 @@ $(document).on("click", ".itemPedido", function(){
 
     $(document).on("click", "#btnCancelar", function(){
         desabilita();
+        carregaPagConta();
     });
 
     $(document).on("click", "#btnSalvarEditar", function(){

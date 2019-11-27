@@ -52,7 +52,6 @@
             <ul class="nav navbar-nav navbar-right">
                 <?php
                     echo '
-                        <li><a href="" id="notification"><i class="fa fa-bell"></i></a></li>
                         <li><a href="https://rentalsystempm.000webhostapp.com/php/conta/logout.php" id="btnDeslogar"><i class="fa fa-power-off">  Sair</i></a></li>
                     ';
                 ?>

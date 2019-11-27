@@ -1,7 +1,7 @@
 <?php
   try{
     include('../conexao.php');
-    $query = "SELECT * FROM tb_Cliente WHERE ds_status = true AND id_nivel = 2;";
+    $query = "SELECT * FROM tb_Cliente WHERE ds_status = true AND id_nivel = 2 ORDER BY dt_cadastro;";
     $resultado = mysqli_query($conecta, $query);
     $registro = array(
       'cliente'=>array()

@@ -2,6 +2,7 @@
 
   try{
     include('../conexao.php');
+    date_default_timezone_set("America/Sao_Paulo");
 
     $codCliente = $_POST['codCliente'];
     $endereco = $_POST['endereco'];
@@ -15,51 +16,57 @@
 
     //Produtos
     $jogos = $_POST['jogos'];
-    if(($_POST['mesas'] != NULL) && ($_POST['mesas'] != '')){
-      $mesas = $_POST['mesas'];
-    }
-    else{
-      $mesas = 0;
-    }
-    if(($_POST['cadeiras'] != NULL) && ($_POST['cadeiras'] != '')){
-      $cadeiras = $_POST['cadeiras'];
-    }
-    else{
-      $cadeiras = 0;
-    }
+    $mesas = $_POST['mesas'];
+    $cadeiras = $_POST['cadeiras'];
     $corToalha = $_POST['corToalha'];
-    if(($_POST['qtToalha'] != NULL) && ($_POST['qtToalha'] != '')){
-      $qtToalha = $_POST['qtToalha'];
+    $qtToalha = $_POST['qtToalha'];
+    if(isset($mesas) == true){
+        $numMesas = ($jogos + $mesas);
     }
     else{
-      $qtToalha = 0;
+        $numMesas = $jogos;
     }
-    $numMesas = ($jogos + $mesas);
-    $numCadeiras = (($jogos * 4) + $cadeiras);
-
+    if(isset($cadeiras) == true){
+        $numCadeiras = (($jogos * 4) + $cadeiras);
+    }
+    else{
+        $numCadeiras = ($jogos * 4);
+    }
+        
+    
     //Queries de valor
     $queryM = "SELECT vl_produto FROM tb_Produto WHERE cd_produto =  (SELECT cd_produto FROM tb_Produto WHERE nm_produto = 'Mesa')";
     $resultadoM = mysqli_query($conecta, $queryM);
     while($linha = mysqli_fetch_assoc($resultadoM)){
       $valMesa = $linha['vl_produto'];
     }
-
+    
     $queryC = "SELECT vl_produto FROM tb_Produto WHERE cd_produto =  (SELECT cd_produto FROM tb_Produto WHERE nm_produto = 'Cadeira')";
     $resultadoC = mysqli_query($conecta, $queryC);
     while($linha = mysqli_fetch_assoc($resultadoC)){
-      $valCadeira = $linha['vl_produto'];
+        $valCadeira = $linha['vl_produto'];
     }
-
-    $queryT = "SELECT vl_produto FROM tb_Produto WHERE cd_produto =  (SELECT cd_produto FROM tb_Produto WHERE nm_produto = 'Toalha' AND ds_produto = '$corToalha')";
-    $resultadoT = mysqli_query($conecta, $queryT);
-    while($linha = mysqli_fetch_assoc($resultadoT)){
-      $valToalha = $linha['vl_produto'];
+    
+    if((isset($corToalha) == true) && (isset($qtToalha) == true)){
+        $queryT = "SELECT vl_produto FROM tb_Produto WHERE cd_produto =  (SELECT cd_produto FROM tb_Produto WHERE nm_produto = 'Toalha' AND ds_produto = '$corToalha')";
+        $resultadoT = mysqli_query($conecta, $queryT);
+        while($linha = mysqli_fetch_assoc($resultadoT)){
+            $valToalha = $linha['vl_produto'];
+        }
     }
-
+    else{
+        $valToalha = 00;
+    }
+    
     //Somas do valor
-    $valMesa = $valMesa * $numMesas;
-    $valCadeira = $valCadeira * $numCadeiras;
-    $valToalha = $valToalha * $qtToalha;
+    $valMesa = ($valMesa * $numMesas);
+    $valCadeira = ($valCadeira * $numCadeiras);
+    if(isset($valToalha) == true){
+        $valToalha = ($valToalha * $qtToalha);
+    }
+    else{
+        $valToalha = 0;
+    }
     $valor = ($valMesa + $valCadeira + $valToalha);
 
     //Inserção de pedido
@@ -73,9 +80,22 @@
       (NULL, (SELECT cd_produto FROM tb_Produto WHERE nm_produto = 'Mesa'), (SELECT MAX(cd_pedido) FROM tb_Pedido), $numMesas),
       (NULL, (SELECT cd_produto FROM tb_Produto WHERE nm_produto = 'Cadeira'), (SELECT MAX(cd_pedido) FROM tb_Pedido), $numCadeiras),
       (NULL, (SELECT cd_produto FROM tb_Produto WHERE nm_produto = 'Toalha' AND ds_produto = '$corToalha'), (SELECT MAX(cd_pedido) FROM tb_Pedido), $qtToalha)";
-
-    mysqli_query($conecta, $query3);
     
+    if(isset($numMesas) == true){
+        $query3 = "INSERT INTO ProdutosDoPedido VALUES 
+      (NULL, (SELECT cd_produto FROM tb_Produto WHERE nm_produto = 'Mesa'), (SELECT MAX(cd_pedido) FROM tb_Pedido), $numMesas);";
+        mysqli_query($conecta, $query3);
+    }
+    if(isset($numCadeiras) == true){
+        $query3 = "INSERT INTO ProdutosDoPedido VALUES 
+      (NULL, (SELECT cd_produto FROM tb_Produto WHERE nm_produto = 'Cadeira'), (SELECT MAX(cd_pedido) FROM tb_Pedido), $numCadeiras);";
+        mysqli_query($conecta, $query3);
+    }
+    if((isset($corToalha) == true) && (isset($qtToalha) == true)){
+        $query3 = "INSERT INTO ProdutosDoPedido VALUES 
+      (NULL, (SELECT cd_produto FROM tb_Produto WHERE nm_produto = 'Toalha' AND ds_produto = '$corToalha'), (SELECT MAX(cd_pedido) FROM tb_Pedido), $qtToalha);";
+        mysqli_query($conecta, $query3);
+    }
 
   } catch (Exception $e) {
     echo "Erro ao cadastrar: ".$e;

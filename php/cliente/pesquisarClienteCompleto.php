@@ -4,7 +4,7 @@
 
     $pesquisa = $_POST['pesquisa'];
 
-    $query = "SELECT * FROM tb_Cliente WHERE ds_status = true AND id_nivel = 2 AND nm_cliente LIKE '%$pesquisa%';";
+    $query = "SELECT * FROM tb_Cliente WHERE ds_status = true AND id_nivel = 2 AND nm_cliente LIKE '%$pesquisa%' ORDER BY dt_cadastro;";
     $resultado = mysqli_query($conecta, $query);
     $registro = array(
       'cliente'=>array()

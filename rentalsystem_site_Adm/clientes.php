@@ -10,13 +10,13 @@
         $_SESSION['nivel'] = 0;
         $_SESSION['codigo'] = 0;
         echo "Acesso negado.";
-        header('Location: https://rentalsystempm.000webhostapp.com/rentalsystem_site_cliente/index.php');
+        header('Location: https://rentalsystempm.000webhostapp.com/rentalsystem_site_cliente/');
     }
     else{
         $nivel =  $_SESSION['nivel'];
         if($nivel != 1){
             echo "Acesso negado.";
-            header('Location: https://rentalsystempm.000webhostapp.com/rentalsystem_site_cliente/index.php');
+            header('Location: https://rentalsystempm.000webhostapp.com/rentalsystem_site_cliente/');
         }
     }
 
@@ -51,8 +51,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <?php
                     echo '
-                        <li><a href="" id="notification"><i class="fa fa-bell"></i></a></li>
-                        <li><a href="https://rentalsystempm.000webhostapp.com/php/conta/logout.php" id="btnDeslogar"><i class="fa fa-power-off">  Sair</i></a></li>
+                        <li><a href="../../php/conta/logout.php" id="btnDeslogar"><i class="fa fa-power-off">  Sair</i></a></li>
                     ';
                 ?>
             </ul>
