@@ -211,6 +211,9 @@ function TestaCPF(strCPF) {
 }
 
 function ValRG(numero){
+    if((numero == "000000000") || (numero == "111111111") || (numero == "222222222") || (numero == "333333333") || (numero == "444444444") || (numero == "555555555") || (numero == "666666666") || (numero == "777777777") || (numero == "888888888") || (numero == "999999999")){
+        return false;
+    }
     var numero = numero.split("");
     tamanho = numero.length;
     vetor = new Array(tamanho);
