@@ -4,7 +4,7 @@
 
     $pesquisa = $_POST['pesquisa'];
 
-    $query = "SELECT cd_cliente, nm_cliente, nr_telefone, CONCAT(nm_endereco, ', ', nr_numeroEndereco, ', ', nm_bairro, ', ', nm_cidade, ', ', nm_UF) AS ds_endereco, ds_email FROM tb_Cliente WHERE ds_status = true AND id_nivel = 2 AND nm_cliente LIKE '%$pesquisa%' ORDER BY dt_cadastro;";
+    $query = "SELECT cd_cliente, nm_cliente, nr_telefone, CONCAT(nm_endereco, ', ', nr_numeroEndereco, ', ', nm_bairro, ', ', nm_cidade, ', ', nm_UF) AS ds_endereco, ds_email FROM tb_Cliente WHERE ds_status = true AND id_nivel = 2 AND CONCAT(nm_cliente, ', ', nm_endereco, ', ', nr_numeroEndereco, ', ', nm_bairro, ', ', nm_cidade, ', ', nm_UF) LIKE '%$pesquisa%' ORDER BY dt_cadastro;";
     $resultado = mysqli_query($conecta, $query);
     $registro = array(
       'cliente'=>array()

@@ -68,7 +68,7 @@
             <div class="col-md-6">
                 <form>
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Pesquise por clientes" id="pesqCliente">
+                        <input type="text" class="form-control cadText" placeholder="Pesquise por clientes" id="pesqCliente">
                         <div class="input-group-btn">
                             <button class="btn btn-default" type="button" id="btnPesqCliente">
                                 <i class="glyphicon glyphicon-search"></i>
@@ -148,6 +148,13 @@
 <script>
     $(document).ready(function(){
         listarCliente();
+    });
+    
+    $('.cadText').on('change keyup', function() {
+      // Remove invalid characters
+      var sanitized = $(this).val().replace(/[^A-Za-z ^~-´`.ÂâÊêÎîÔôÛûÁáÉéÍíÓóÚúÀàÈèÌìÒòÙùÃãÕõÄäËëÏïÖöÜü]/g, '');
+      // Update value
+      $(this).val(sanitized);
     });
 </script>
 

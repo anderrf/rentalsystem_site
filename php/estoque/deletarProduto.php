@@ -12,16 +12,19 @@
             $senhaVerificar = $linha['ds_senha'];
             
     }
-    if($senha == $senhaVerificar){
-        $query2 = "DELETE FROM tb_Produto WHERE cd_produto = '$codProduto';";
-        mysqli_query($conecta, $query2);
+    if(isset($senhaVerificar) == true){
+        if($senha == $senhaVerificar){
+            $query2 = "DELETE FROM tb_Produto WHERE cd_produto = '$codProduto';";
+            mysqli_query($conecta, $query2);
             echo "Deleção realizada com sucesso";
         }
         else{
             echo "Erro ao deletar.";
         }
-    
-
+    }
+    else{
+        echo "Erro ao deletar.";
+    }
     
 
   } catch (Exception $e) {

@@ -1,13 +1,16 @@
 <?php
   try{
     include('../conexao.php');
-    
-    $pesquisa = $_POST['pesquisa'];
+
     $status = $_POST['status'];
+    $pesquisa = $_POST['pesquisa'];
+    
 
     $query = "SELECT pe.cd_pedido, pe.nm_endereco, pe.nr_numeroEndereco, pe.nm_bairro, pe.nm_cidade, pe.nm_UF, 
-      pe.ds_referencia, pe.dt_pedido, pe.dt_entrega, pe.dt_retirada, pe.vl_pedido, cl.nm_cliente, pe.nm_endereco, ', ',
-      pe.id_statusPedido FROM tb_Pedido pe INNER JOIN tb_Cliente cl ON pe.id_cliente = cl.cd_cliente WHERE (CONCAT(pe.nm_endereco, ', ', pe.nr_numeroEndereco, ', ', pe.nm_bairro, ', ', pe.nm_cidade) LIKE '%$pesquisa%') OR (pe.ds_referencia LIKE '%$pesquisa%') OR (cl.nm_cliente LIKE '%$pesquisa%') AND pe.id_statusPedido = '$status' ORDER BY pe.dt_pedido;";
+      pe.ds_referencia, pe.dt_pedido, pe.dt_entrega, pe.dt_retirada, pe.vl_pedido, cl.nm_cliente, 
+      pe.id_statusPedido FROM tb_Pedido pe INNER JOIN tb_Cliente cl ON pe.id_cliente = cl.cd_cliente 
+      WHERE pe.id_statusPedido = '$status' AND CONCAT(cl.nm_cliente, ', ', pe.nm_endereco, pe.nr_numeroEndereco, pe.nm_bairro, pe.nm_cidade, pe.nm_UF, 
+      pe.ds_referencia) LIKE '%$pesquisa%' ORDER BY pe.dt_pedido;";
     
     $resultado = mysqli_query($conecta, $query);
     $registro = array(

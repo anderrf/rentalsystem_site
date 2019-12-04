@@ -1,5 +1,6 @@
 <?php
     session_start();
+    $_SESSION['erro'] = null;
     $varLogin = $_SESSION['varLogin'];
 
     if($varLogin != true){

@@ -1,5 +1,11 @@
 <?php
     session_start();
+    if(($_SESSION['erro'] == null) || ($_SESSION['erro'] == '')){
+        $erro = null;
+    }
+    else{
+        $erro = $_SESSION['erro'];
+    }
     $varLogin = $_SESSION['varLogin'];
 ?>
 <!DOCTYPE html>
@@ -50,21 +56,29 @@
     </div>
   </nav>
 
-  <div class="login-box">
-    <h1>Login</h1>
-
-    <form method="POST" action="../../php/conta/efetuarLogin.php">
-      <div class="textbox">
-        <i class="fa fa-user"></i>
-        <input type="text" placeholder="Nome" name="nome" value="" id="inpNome">
-      </div>
-      <div class="textbox">
-        <i class="fa fa-key"></i>
-        <input type="password" placeholder="Senha" name="senha" value="" id="inpSenha">
-      </div>
-        <input class="btnContato" type="submit" name="" value="Entrar" id="btnEntrar">
-    </form>
-  </div>
+    <div class="login-box">
+        <h1 id="hLogin" value="<?php
+        
+        if(($erro == null) || ($erro == '')){
+            echo null;
+        }
+        else{
+            echo $erro;
+        }
+        
+        ?>">Login</h1>
+        <form action="../../php/conta/efetuarLogin.php" method="POST">
+            <div class="textbox">
+                <i class="fa fa-user"></i>
+                <input type="text" placeholder="Nome" name="nome" value="" id="inpNome" class="logText" required>
+            </div>
+            <div class="textbox">
+                <i class="fa fa-key"></i>
+                <input type="password" placeholder="Senha" name="senha" value="" id="inpSenha" required>
+            </div>
+            <input class="btnContato" type="submit" name="" value="Entrar" id="btnEntrar">
+        </form>
+    </div>
 
 
 
@@ -72,6 +86,22 @@
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/action.js"></script>
-<script src="js/conta.js"></script>
+<script>
+
+    $(document).ready(function(){
+        if(($("#hLogin").attr("value") != null) && ($("#hLogin").attr("value") != '')){
+            alert($("#hLogin").attr("value"));
+        }
+    });
+
+    $('.logText').on('change keyup', function() {
+        // Remove invalid characters
+        var sanitized = $(this).val().replace(/[^A-Za-z ^~-´`.ÂâÊêÎîÔôÛûÁáÉéÍíÓóÚúÀàÈèÌìÒòÙùÃãÕõÄäËëÏïÖöÜü]/g, '');
+        // Update value
+        $(this).val(sanitized);
+    });
+    
+    
+</script>
 
 </html>

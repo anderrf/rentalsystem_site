@@ -1,8 +1,7 @@
 <?php
     session_start();
-
+    $_SESSION['erro'] = null;
     $varLogin = $_SESSION['varLogin'];
-
     $codigo = $_SESSION['codigo'];
 
     if($varLogin != true){
